@@ -1,0 +1,53 @@
+﻿
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	color: #C81D49;
+}
+p {
+
+}
+.newStyle1 {
+}
+dt{
+	color: #C81D49;
+}
+dt.sidebar {
+	background-color: #C81D49;
+	font-size: 125%;
+	margin-top: 1ex;
+}
+img.leftfloat 
+{
+	float:left;
+	margin-right: 1em;
+ }
+img.rightfloat 
+{
+	float:right;
+	margin-left: 1em;
+ }
+a.sidebar {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.background {
+	background-color: #000000;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.sidebar {
+	font-family: Arial, Helvetica, sans-serif;
+	vertical-align: top;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+dd {
+	margin-bottom: 1ex;
+}

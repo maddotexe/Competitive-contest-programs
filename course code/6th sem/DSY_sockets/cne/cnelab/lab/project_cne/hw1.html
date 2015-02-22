@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+
+
+  
+
+
+  
+  
+  
+  <title>CS276: Advanced Topics in Networking</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+  
+  
+  <link rel="stylesheet" type="text/css" href="hw1_files/style.css">
+</head>
+<body>
+<div class="header">
+<h1>CS276: Fall '10</h1>
+
+
+<div align="right">Advanced Topics in Networking</div>
+
+
+<div class="nav"> 
+<a href="http://cs.ucsb.edu/%7Eravenben/classes/276/index.html">Main</a>
+<a href="http://cs.ucsb.edu/%7Eravenben/classes/276/lectures.html">Lectures</a> 
+<a href="http://cs.ucsb.edu/%7Eravenben/classes/276/readings.html">Readings</a> 
+<a href="http://cs.ucsb.edu/%7Eravenben/classes/276/project.html">Projects</a>
+<a href="http://cs.ucsb.edu/%7Eravenben/classes/276/homeworks.html">Homeworks</a>
+</div>
+
+
+</div>
+
+
+<div class="upperleft">
+<div class="upperright">
+<div class="lowerleft">
+<div class="lowerright">
+<h1 style="text-align: center;">Homework 1<br>
+</h1>
+<h3>Objective</h3>
+The original design of the Transmission Control Protocol (TCP) worked
+reliably, but was unable to provide acceptable performance
+in&nbsp;large and congested networks. Several TCP variants have been
+proposed since then (TCP Tahoe, Reno, NewReno, Vegas and SACK) with
+mechanisms to control and avoid congestion. The objective of this
+homework is for you to analyze the performance of these different TCP
+variants.&nbsp; You will use the NS-2 network simulator to perform
+experiments that will help you understand the behavior of the TCP
+variants under various load conditions and queuing algorithms. &nbsp;
+Before starting the assignment, you will need to familiarize yourself
+with NS-2 with the information on this <a href="http://cs.ucsb.edu/%7Eravenben/classes/276/introns.html">page</a>.
+<br>
+<br>
+Another objective of this assignment is for you to practice performance
+evaluation. In order to perform a complete analysis of the TCP
+variants, you should first read the paper: "Simulation-based
+Comparisons of Tahoe, Reno and SACK TCP" (<a href="http://cs.ucsb.edu/%7Eravenben/classes/276/papers/tcp-sim.pdf">PDF</a>)
+to understand what type of analysis you are required to do. &nbsp;The
+paper also includes details on the relevant TCP variants used in this
+assignment.<br>
+<h3>Assignment</h3>
+In this assignment, you will analyze the performance of TCP
+variants (Reno, NewReno, and Vegas) under the influence of
+various load conditions and queuing algorithms. In the first part of
+the assignment, you will perform experiments that analyze fairness
+between these TCP variants in the presence of a Constant Bit Rate (CBR)
+flow.&nbsp; In the second part of the assignment, you will understand
+the behavior of the TCP variants under the influence of two different
+queuing disciplines (DropTail and RED). <br>
+<h3>Part 1 - Fairness between TCP variants</h3>
+To study the behavior of the four TCP variants, you need to first set
+up a network topology. Use the following topology with 10Mbits on all
+links.<br>
+                                
+<pre>                         N1                      N4
+                           \                    /
+                            \                  /
+                             N2--------------N3
+                            /                  \
+                           /                    \
+                         N5                      N6
+</pre>
+
+<br>
+Add a CBR source at N2 and a sink at N3. Next, add two TCP streams from
+N1 to N4 and N5 to N6. Graph the average packet loss rate and the
+average bandwidth used by all three flows as a function of the
+bandwidth used by the CBR flow. That is, the CBR flow is the parameter
+you need to vary for this experiment. You must repeat the experiment
+using the following TCP variants (one variant creating traffic from N1
+to N4, and the other creating traffic from N5 to N6):<br>
+<ul>
+  <li>Reno/Reno </li>
+  <li>NewReno/Reno</li>
+  <li>Vegas/Vegas</li> 
+  <li>NewReno/Vegas</li>
+</ul>
+Next, remove one TCP stream and analyze how a single flow of each TCP
+variant reacts to an increasing CBR flow. Perform the experiments with
+Reno, NewReno, and Vegas.<br>
+<h3>Part 2 - Influence of Queuing</h3>
+Queuing disciplines like DropTail and Random Early Drop (RED) are
+algorithms that control how packets in a queue are treated. Instead of 
+varying the rate of the CBR flow, we will now study the influence of
+the queuing discipline used at the node on the overall throughput.
+<ol>
+  <li> Use the same topology from Part1 and have one TCP flow (N1-N4) and one CBR/UDP (N5-N6) flow.
+First, start the TCP flow. Once the TCP flow is steady, start the CBR
+source and analyze how the TCP and CBR flows change under the following
+queuing algorithms: DropTail and RED. Perform the experiments with TCP
+Reno and SACK. Answer the following questions for Reno and for SACK:<br>Simulate the following scenario under two queuing algorithms: One
+TCP flow (test with Reno and SACK) sending 1000 bytes packets, and one
+UDP flow sending 500 bytes packets at a rate of 1 Mbps. The middle link
+they are sharing is a 1.5Mbps link. How do results change? Why?</li>
+  <li>Consider three UDP flows sharing a 1.5 Mbps link (See figure below): 
+The first two UDP flows are sending 1000 byte packets at 1 Mbps, and the last UDP
+flow is sending 500 byte packets at 0.6 Mbps. Assume that the flows
+start sending at 0sec, 0.1sec, and 0.2sec, respectively. Plot the
+throughput of all three flows. Explain the results. Measure the average
+packet latency (end-to-end delay) for the packets for different flows
+and plot it. How does it differ between DropTail and RED?</li>
+  <li>Does each queuing discipline provide fair bandwidth to each flow?
+How does the TCP flow react to the creation of the CBR flow? Is RED a
+good idea while dealing with SACK? </li>
+</ol>
+<pre>                         N1                      N4
+                           \                    /
+                            \                  /
+                    N7------N2--------------N3--------N8
+                            /                  \
+                           /                    \
+                         N5                      N6
+</pre>
+
+<span style="font-weight: bold;">Note</span><br>
+To prepare you to complete this assignment, you should write scripts
+that parse the trace files and enable you to report average bandwidth,
+packet drops, throughput, end-to-end latency, sequence numbers of
+packets sent, and TCP congestion window of any flow. You will use these
+scripts to extract the information you will need to answer the above
+questions. You need to understand the format of the TCP output file to
+successfully write these scripts.<br>
+<h3>Submission</h3>
+This homework assignment is due by 11:59pm on October 26. Late homework will not be 
+accepted. 
+Submit your homework as a PDF file via email attachment to yibo at
+cs. &nbsp;The email MUST have as its subject "276HW1" (without
+quotes). &nbsp;The attachment should be a single PDF file called
+YOURLASTNAME.pdf. (substitute your name in).<br>
+
+<br>
+
+Your pdf file should include:&nbsp;
+<br>
+<ul>
+  <li>A <b>write-up</b>
+that describe your methodology and observations. Avoid verbose
+discussion of the results. Additional results, insight, and analysis of
+the results, however, are strongly encouraged.</li>
+</ul>
+ 
+
+<ul>
+  <li>
+Submit
+    <b>graphs</b> that are relevant to your analysis of the
+TCP variants. Be selective in your graph submission. Submit only those
+graphs that convey a point you are trying to make. Graphs are to be
+plotted using xgraph or gnuplot only. Avoid printing one graph per
+page. Logical organization of content (text and graphs) is expected!
+
+  </li>
+</ul>
+<ul>
+  <li>
+Submit
+your TCL <b>scripts</b>. You can use the OpenOffice.org
+Writer to convert your scripts and text files to pdf format.<br>
+  </li>
+</ul>
+<h3>Grading Guidelines </h3>
+You will be graded on the quality
+of the scripts and on the quality of your research, including your
+findings, explanation and presentation of your findings. Each part of
+the homework assignment is worth 50 points.<br>
+<h3>Cheating Policy</h3>
+This
+assignment is to be done individually. Cheating will not be tolerated.
+Please read the <a href="http://charm.physics.ucsb.edu/people/hnn/conduct/cam_reg_stud_a.html">UCSB Academic Code of Conduct</a> to find out more about
+Student Conduct and Discipline. Of particular relevance to this
+assignment is the need to properly cite material you have used. Failure
+to do so constitutes plagiarism.</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</body></html>

@@ -1,0 +1,111 @@
+
+/* stuff to add to the css.  dunno the best way to do it. */
+
+ul.secondary-links {
+/*   border-top: 1px solid #CCC; */
+  padding: 0px 0 0; /* ns */
+/*  max-width: 450px; /* ns */
+  line-height: 0.6em; /* ns */
+  /* float: right; */
+  display: inline;
+  float: none;
+}
+
+ul.secondary-links li {
+  /* float: left; /* ns */
+  padding-right: 0em;
+}
+
+/* li.menu-493 { 
+  clear: all;
+} */
+
+.ns-role-heading-header {
+  float: left; /* otherwise gets rendered on the right, I guess inheriting? */
+  padding-top: 10px;
+  padding-left: 18px;
+  padding-right: 8px;
+  display: inline;
+}
+.ns-role-heading {
+  border-top: 1px solid #CCC;
+  padding: 12px 0 0; /* ns */
+  float: right; 
+  width: 475px;
+  color: #cfd4e2;
+}
+
+ul.secondary-links li.first {
+  padding: 0 10px; /* ns */
+}
+ul.secondary-links li.menu-600 {
+  padding: 0 10px; /* ns */
+}
+
+#wrapper #container #header h1 img {
+  padding-top: 0px; /* for the 110px logo */
+}
+
+img.portrait {
+   border: 3px;
+   float: left;
+   padding: 5px 30px 5px 15px;
+   max-width: 200px;
+   max-height: 150px;
+}
+
+#wrapper #container .searchcrumb {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  z-index: 3;
+}
+
+.searchcrumb .form-submit,  .searchcrumb .form-button, .form-submit,  .form-button {
+  padding: 0px
+  margin: 0px
+}
+
+.form-button, .form-submit {
+  margin: 0;
+}
+#search.container-inline #edit-submit-1.form-submit { 
+  border-left: 4px solid #8e1a27;
+  border-right: 4px solid #8e1a27;
+}
+#search.container-inline #edit-submit-2.form-submit { 
+  border-left: 4px solid #8e1a27;
+  border-right: 4px solid #8e1a27;
+}
+
+/* the search box */
+#edit-search-theme-form-1-wrapper.form-item { 
+        bottom: 5px;
+        position: relative;
+}
+.description {
+        color: #696969; /* darken from 494949 in default style. */
+}
+
+ul.secondary-links li a, ul.secondary-links li a:link, ul.secondary-links li a:visited {
+  padding: 5px 0; /* overrides to make symmetric top and bottom. */
+}
+
+div.content.clear-block { 
+   font: 12px/150% Verdana, sans-serif;
+}
+
+.service-label {
+  display: inline;
+  font-weight: bold;
+}
+
+div.service-links ul.links {
+  display: inline;
+}
+
+
+div.item-list ul li.views-row {
+    /* padding-top: 10px; adding at top offsets from the bullet */
+    padding-bottom: 20px;
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><title>CS276: Advanced Topics in Networking</title>
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="hw2_files/style.css"></head><body>
+
+<div class="header">
+<h1>CS276: Fall '11</h1>
+
+<div align="right">Advanced Topics in Networking</div>
+<div class="nav"> 
+<a href="https://www.cs.ucsb.edu/%7Eravenben/classes/276/index.html">Main</a>
+<a href="https://www.cs.ucsb.edu/%7Eravenben/classes/276/lectures.html">Lectures</a> 
+<a href="https://www.cs.ucsb.edu/%7Eravenben/classes/276/readings.html">Readings</a> 
+<a href="https://www.cs.ucsb.edu/%7Eravenben/classes/276/project.html">Projects</a>
+<a href="https://www.cs.ucsb.edu/%7Eravenben/classes/276/homeworks.html">Homeworks</a>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div class="upperleft">
+<div class="upperright">
+<div class="lowerleft">
+<div class="lowerright">
+<h1 style="text-align: center;">Homework 2<br>
+
+
+
+</h1>
+
+
+
+<h3>Objective</h3>
+
+
+
+<a href="http://www.planet-lab.org/">PlanetLab</a> is a global
+networking testbed founded to give academic researchers a way to
+evaluate and deploy true Internet-scale services and applications.
+&nbsp;It currently supports over 900 individual machines spread across
+over 470 locations on 5 continents. &nbsp;The objective of this
+homework is to experiment with PlanetLab and gather first-hand
+measurements of the Internet from a global perspective, as it is today.
+&nbsp;Specifically, we are looking to evaluate (at a very rough
+granularity) the types of unexpected and abnormal behavior first
+observed in [Pax96].
+
+<h3>Assignment</h3>
+
+In this assignment, you will implement a simple measurement platform
+where 20 Internet PL nodes of your choice periodically perform
+pair-wise path measurements using ping and traceroute. &nbsp; Your
+service should run as daemons on the subset of PlanetLab hosts you
+choose, gathering data over a period of at least 2 weeks. Your
+measurement nodes should maintain and store logs on the local disk, and
+move them periodically to your CSIL account. &nbsp;Once all of
+your measurements have completed, you should analyze the measurement
+data to answer the questions below. Note that you want to save some
+time at the end in case you want to go back and perform additional
+measurements to support your answers.<br>
+<br>
+Please read all of the questions below before writing your measurement
+daemons, since you will likely need to tailor your daemon based on the
+answers you need.&nbsp; Also, beware the flakiness of Planetlab nodes,
+which means that you will want to pull data files off of them
+frequently, lest the machine fails and takes your experimental logs
+with them.<br>
+
+<br>
+<span style="font-weight: bold;">Questions</span><br>
+
+<ol>
+
+  <li>How often did you detect outages in pair-wise paths between your nodes (as a portion of all paths monitored)? &nbsp;</li>
+  
+  <ol>
+    <li>How many of them were temporary? &nbsp;For each temporary
+failure, can you determine the likely cause from your measurements?
+&nbsp;If so, what is it? If not, what missing data would allow you to
+determine the real cause?</li>
+    <li>How many failures were long term outages? Remember that PL
+machines go down often for maintenance and repair. &nbsp;You should
+read the PL-user mailing list to hear announcements of planned
+downtime. &nbsp;Can you determine the root cause for each of your
+long-term outages? What are they?<br>
+
+
+    </li>
+
+
+  
+  
+  </ol>
+
+
+  <li>Of
+the outages in pair-wise paths you detected, what percentage of them
+are failures in the "core" versus local ISP failures?&nbsp; <br>
+</li>
+  <ol>
+    <li>Of these failures, how many could be successfully circumvented
+in "real time" by an SOSR-like system?&nbsp; (Hint: this might require
+you to instrument your measurement daemons with additional code for
+triggering tests at a random third PL node).</li>
+    <li>Did you detect a significant difference in the reliability of 
+continental links versus inter-continental links that crossed the 
+Pacific or Atlantic oceans?<br>
+    </li>
+  </ol>
+  <li>Did you detect route "fluttering", if so, where and how often?&nbsp;<br>
+
+
+  </li>
+
+
+
+  <li>Did you detect "abnormal" triangle routing, where the traceroute
+path traversed a network hop out of the "expected" general direction of
+the destination? &nbsp;Describe these routes, if any.<br>
+
+
+  </li>
+
+
+  <li>Plot your average pair-wise latency distributions in a CDF. Based on your measurements, can
+you detect which nodes in your network are Internet2 hosts?
+&nbsp;(Hint: some Internet2 hosts are reachable only by other Internet2
+hosts, and not by Internet1 hosts.)<br>
+
+
+  </li>
+
+
+  <li>Based on your small sample of measurement data, do you think
+routing abnormalities have increased or decreased in number from the
+days when Paxson first performed these measurements? &nbsp;Why?<br>
+
+
+  </li>
+
+
+</ol>
+
+
+<big style="font-weight: bold;">Choosing PlanetLab nodes</big><br>
+
+
+Beware that a number of PlanetLab hosts are "Alpha" machines. &nbsp;I
+suggest logging into each of your desired nodes first to see if they
+are designated Alpha nodes. Alpha nodes will report their status to you
+every time you log in. &nbsp;In general, you want to choose nodes that
+are spread out in geographic location. You can log on to planet-lab.org 
+and choose your own nodes by going to the right and going to the slice 
+management section. &nbsp;I suggest choosing nodes such that you include the
+following subsets:<br>
+
+
+<ul>
+
+
+  <li>at least 2-3 nodes from continents other than N. America</li>
+
+
+  <li>at least 1 transatlantic and 1 transpacific link</li>
+
+
+  <li>at least 1 group of 2-3 hosts from the same site, so you can include LAN results in your measurements</li>
+
+
+</ul>
+
+
+<big><span style="font-weight: bold;">Choosing measurement periodicity</span></big><br>
+
+
+Remember that some node-pairs can be very far apart (a la Estonia to
+New Zealand). You should measure at a frequency that allows each prior
+traceroute to finish before the new traceroute starts. &nbsp;1
+measurement every 10 minutes is probably safe.<br>
+
+
+<br>
+
+
+<big><span style="font-weight: bold;">Project Workload</span></big><br>Hi
+all. I will assign students in the class randomly into slices, with
+roughly 2 students per slice. It is fine if you collaborate with the
+other student you are sharing a slice with, but only with
+him/her.&nbsp; In the table below,
+I have listed the slice names and users in each
+slice. I will continue to update this table as more users sign up for
+accounts.&nbsp; Some of the slices have not had their nodes assigned
+yet.
+You can do it yourself by going to your slice and then choosing manage
+nodes.<br>
+
+<!--
+<br>
+<table style="text-align: left; width: 60%;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Slice Name<br>
+      </td>
+      <td style="vertical-align: top;">Assigned Users<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276a<br>
+      </td>
+      <td style="vertical-align: top;">Byungkyo Kang, Christian Askeland<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276b</td>
+      <td style="vertical-align: top;">Divyashree Hassan Ravindrakumar, Domagoj	Baricevic<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276c</td>
+      <td style="vertical-align: top;">Rupa Ganjewar, Shashank Hegde<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276d</td>
+      <td style="vertical-align: top;">Kevin Francis, Manasa Chandrashekar<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276e</td>
+      <td style="vertical-align: top;">Nitin Chhabra, Peter Hsieh<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276f</td>
+      <td style="vertical-align: top;">Sagar Joglekar, Abhinav Anand<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276g</td>
+      <td style="vertical-align: top;">Vasanth Kumar, Gang Wang<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276h</td>
+      <td style="vertical-align: top;">youngjoon choi, Arvind Subramanian<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276i</td>
+      <td style="vertical-align: top;">Daniel Vucci, Xun Li<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276j</td>
+      <td style="vertical-align: top;">Rone Lim, Sanmay Patil<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276k</td>
+      <td style="vertical-align: top;">Yuanyang Zhang, Arne Oestvold<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276l</td>
+      <td style="vertical-align: top;">Damon Valenzona, Rune Kulstad<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276m</td>
+      <td style="vertical-align: top;">Saiph Savage, Maciej Baranski
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276n</td>
+      <td style="vertical-align: top;">Troy Steinbauer, Julian Claudino<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ucsb_cs276o</td>
+      <td style="vertical-align: top;">Patrick Juers<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+-->
+
+<h3>Submission</h3>
+
+This homework assignment is due by 11:59pm on November 26. Late
+homework will not be accepted. Submit your homework as two files via
+email attachment to yibo@cs. &nbsp;The email MUST have as its subject "276HW2" (without
+quotes). &nbsp;The attachments should be two files: one PDF file 
+called LASTNAME.pdf, and one ZIP file called LASTNAME.zip 
+(substitute in your lastname).<br>
+
+<br>
+
+Your
+pdf file should include:&nbsp;
+<br>
+
+<ul>
+  <li>A <b>write-up</b> that describe your methodology, observations and answers to 
+the questions above. Avoid verbose discussion of the results. Additional results, 
+insight, and analysis of the results, however, are strongly encouraged.</li>
+</ul>
+
+<ul>
+  <li>
+Submit any <b>graphs</b> that are relevant to your
+analysis, including a CDF of the 400 path latencies observed. &nbsp;Use
+your judgment. Be concise but make any arguments
+convincingly.&nbsp;Graphs are to be
+plotted using xgraph or gnuplot only. Avoid printing one graph per
+page. Logical organization of content (text and graphs) is expected! </li>
+
+</ul>
+
+Your zip file should include:&nbsp;
+
+<ul>
+
+
+  <li> The names of the hosts you used in your experiments. The zip 
+file should also contain all of your code and all scripts you used to parse, process 
+and analyze the results.
+  </li>
+
+</ul>
+
+
+Finally, when you are all done submitting the homework, &nbsp;<span style="font-weight: bold;">REMEMBER</span> to <span style="font-weight: bold; color: rgb(255, 0, 0);">KILL</span> your daemons. <br>
+
+
+<h3>Grading Guidelines </h3>
+
+
+
+You will be graded on the consistency of your measurements the&nbsp;quality of your analysis, including your
+findings, explanation and presentation of your findings.
+<h3>Cheating Policy</h3>
+
+
+
+Cheating will not be tolerated.
+Please read the <a href="http://charm.physics.ucsb.edu/people/hnn/conduct/cam_reg_stud_a.html">UCSB Academic Code of Conduct</a> to find out more about
+Student Conduct and Discipline. &nbsp;</div>
+
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Computer Systems and Networks Group</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link href="research.php_files/csng.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="research.php_files/jquery-1.htm"></script>
+
+<script type="text/javascript" src="research.php_files/ddaccordion.htm">
+
+</script>
+
+<!-- Added by de Lara -->
+<script src="research.php_files/prototype.js" type="text/javascript"></script>
+<script src="research.php_files/publication.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+
+
+ddaccordion.init({
+	headerclass: "submenuheader", //Shared CSS class name of headers group
+	contentclass: "submenu", //Shared CSS class name of contents group
+	revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click" or "mouseover
+	collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
+	defaultexpanded: [], //index of content(s) open by default [index1, index2, etc] [] denotes no content
+	onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+	animatedefault: false, //Should contents open by default be animated into view?
+	persiststate: true, //persist state of opened contents within browser session?
+	toggleclass: ["", ""], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+	togglehtml: ["suffix", "<img src='menu/plus.gif' class='statusicon' />", "<img src='menu/minus.gif' class='statusicon' />"], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+	animatespeed: "normal", //speed of animation: "fast", "normal", or "slow"
+	oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+		//do nothing
+	},
+	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+		//do nothing
+	}
+})
+
+
+</script>
+<script type="text/javascript">
+
+/***********************************************
+* Dynamic Ajax Content- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+var loadedobjects=""
+var rootdomain="http://"+window.location.hostname
+
+function ajaxpage(url, containerid){
+var page_request = false
+if (window.XMLHttpRequest) // if Mozilla, Safari etc
+page_request = new XMLHttpRequest()
+else if (window.ActiveXObject){ // if IE
+try {
+page_request = new ActiveXObject("Msxml2.XMLHTTP")
+} 
+catch (e){
+try{
+page_request = new ActiveXObject("Microsoft.XMLHTTP")
+}
+catch (e){}
+}
+}
+else
+return false
+page_request.onreadystatechange=function(){
+loadpage(page_request, containerid)
+}
+page_request.open('GET', url, true)
+page_request.send(null)
+}
+
+function loadpage(page_request, containerid){
+if (page_request.readyState == 4 && (page_request.status==200 || window.location.href.indexOf("http")==-1))
+document.getElementById(containerid).innerHTML=page_request.responseText
+}
+
+function loadobjs(){
+if (!document.getElementById)
+return
+for (i=0; i<arguments.length; i++){
+var file=arguments[i]
+var fileref=""
+if (loadedobjects.indexOf(file)==-1){ //Check to see if this object has not already been added to page before proceeding
+if (file.indexOf(".js")!=-1){ //If object is a js file
+fileref=document.createElement('script')
+fileref.setAttribute("type","text/javascript");
+fileref.setAttribute("src", file);
+}
+else if (file.indexOf(".css")!=-1){ //If object is a css file
+fileref=document.createElement("link")
+fileref.setAttribute("rel", "stylesheet");
+fileref.setAttribute("type", "text/css");
+fileref.setAttribute("href", file);
+}
+}
+if (fileref!=""){
+document.getElementsByTagName("head").item(0).appendChild(fileref)
+loadedobjects+=file+" " //Remember this object as being already added to page
+}
+}
+}
+
+</script>
+
+
+<style type="text/css">
+<!--
+body {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+-->
+</style></head>
+<body onload="new Ajax.Updater('main3', '/projects/list/?fragment=1', { method: 'get' });">
+<div id="header1">
+    <div class="buton1">
+  <p><a href="http://csng.cs.toronto.edu/index.php" target="_self" class="a">Home</a></p>
+  </div>
+   
+    <div class="topline">
+    
+<script language="JavaScript">
+
+ <!-- Begin 
+
+ var myweekday="";
+ var month=""; 
+ var year=""; 
+ var day="";
+ mydate = new Date(); 
+ myday = mydate.getDay(); 
+ mymonth = mydate.getMonth(); 
+ myweekday= mydate.getDate(); 
+ weekday= myweekday; 
+ myyear= mydate.getYear(); 
+ year = myyear 
+ if(myday == 0) 
+ day = " Sunday " 
+ else if(myday == 1) 
+ day = " Monday " 
+ else if(myday == 2) 
+ day = " Tuesday " 
+ else if(myday == 3) 
+ day = " Wednesday " 
+ else if(myday == 4) 
+ day = " Thursday " 
+ else if(myday == 5) 
+ day = " Friday " 
+ else if(myday == 6) 
+ day = " Saturday " 
+ if(mymonth == 0) { 
+ month = "January "} 
+ else if(mymonth ==1) 
+ month = "February " 
+ else if(mymonth ==2) 
+ month = "March " 
+ else if(mymonth ==3) 
+ month = "April " 
+ else if(mymonth ==4) 
+ month = "May " 
+ else if(mymonth ==5) 
+ month = "June " 
+ else if(mymonth ==6) 
+ month = "July " 
+ else if(mymonth ==7) 
+ month = "Agust " 
+ else if(mymonth ==8) 
+ month = "September " 
+ else if(mymonth ==9) 
+ month = "October " 
+ else if(mymonth ==10) 
+ month = "November " 
+ else if(mymonth ==11) 
+ month = "December " 
+if ((navigator.appName == "Microsoft Internet Explorer") && (year < 2000))		
+year="19" + year;
+if (navigator.appName == "Netscape")
+year=1900 + year;
+document.write("<font face=Arial, Helvetica, sans-serif size=1 color=#ffffff>"+day +", "+ month + "&nbsp;" + myweekday ); 
+ document.write(", " + year + "&nbsp;</font>"); // End --> 
+      
+
+</script><font helvetica,="" sans-serif="" color="#ffffff" face="Arial," size="1"> Tuesday , July &nbsp;23, 2013&nbsp;</font>  </div>
+   
+    </div>
+    
+<div id="header2">
+<div class="sec1a">
+   <p>&nbsp;</p>
+</div>
+<div class="sec2">
+  <p>&nbsp;</p>
+  <p>Research</p>
+</div>
+</div>
+
+<div id="content">
+
+	<div id="sidebar">
+	 		
+    <div class="menu">     
+    
+    
+<script src="research.php_files/SpryMenuBar.js" type="text/javascript"></script>
+<link href="research.php_files/SpryMenuBarVertical.css" rel="stylesheet" type="text/css">
+
+
+<ul id="MenuBar1" class="MenuBarVertical">
+        <li><a href="http://csng.cs.toronto.edu/people.php" target="_self">PEOPLE</a>        </li>
+    <li><a href="http://csng.cs.toronto.edu/news.php" target="_self">NEWS</a></li>
+      <li><a href="http://csng.cs.toronto.edu/research.php" target="_self">RESEARCH</a>          </li>
+      <li><a href="http://csng.cs.toronto.edu/publications.php" target="_self">PUBLICATIONS</a>      </li>
+      <li><a href="http://csng.cs.toronto.edu/courses.php" target="_self">COURSES</a></li>
+      <li><a href="http://csng.cs.toronto.edu/admissions.php" target="_self">ADMISSIONS</a></li>
+      <li><a href="http://csng.cs.toronto.edu/links.php" target="_self">LINKS</a></li>
+      <li><a href="http://csng.cs.toronto.edu/contact.php" target="_self">CONTACT</a></li>
+</ul>
+
+
+<script type="text/javascript">
+<!--
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+//-->
+</script>
+    
+    
+    </div>
+		 
+	   
+      <div class="menualti">
+       <link href="research.php_files/csng.css" rel="stylesheet" type="text/css">
+<div class="other">
+  
+  <p class="baslik2" align="left"> Upcoming Events</p>
+  <p>&nbsp;</p>
+  
+  <p class="small"><a href="http://web.cs.toronto.edu/news/events.htm" target="_blank"> - Events Calendar</a></p>
+  <p class="small">&nbsp;</p>
+  
+
+</div>
+     </div>
+          
+     </div>
+	<!-- end #sidebar -->
+        <div id="main2">
+	<div id="main">
+	  <p> </p>
+	  <span class="justify"><p>&nbsp;</p>
+	  <p>The computer systems and networks group engages in a wide range of 
+	    experimental and theoretical research. Our current projects span 
+	    operating systems, network measurement and traffic analysis, 
+	    peer-to-peer system design, network security, mobile code architectures, 
+	    high-performance cluster computing, wireless networking and much more. 
+	    Our group consists of 7 faculty and over 25 graduate students, and is 
+      supported by research funds from government and industrial sources.</p>
+	  </span>
+	  <p>&nbsp;</p>
+
+      
+
+          <div id="main3">
+
+
+
+<table>
+
+
+    
+
+  <tbody><tr>
+    <td align="center">
+      
+         <img alt="Calibre" src="research.php_files/calibre.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/5?fragment=yes&amp;', { method: 'get' });">Accurate Cell Phone Localization</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Uoft" src="research.php_files/uoft.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/13?fragment=yes&amp;', { method: 'get' });">Compiler and Interpreter Optimization</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Uoft" src="research.php_files/uoft_007.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/23?fragment=yes&amp;', { method: 'get' });">Comprehensive Kernel Instrumentation with Dynamic Binary Instrumentation </a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Logo" src="research.php_files/logo.png" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/21?fragment=yes&amp;', { method: 'get' });">Hardware Accelerated System Software</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Chameleon" src="research.php_files/chameleon.png" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/4?fragment=yes&amp;', { method: 'get' });">Interactive Web Content Adaptation</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Jackpine" src="research.php_files/Jackpine.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/20?fragment=yes&amp;', { method: 'get' });">Jackpine: A Spatial Database Benchmark</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Uoft" src="research.php_files/uoft_006.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/24?fragment=yes&amp;', { method: 'get' });">Let the Market Drive Deployment: A Strategy for Transitioning to BGP Security</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Uoft" src="research.php_files/uoft_002.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/25?fragment=yes&amp;', { method: 'get' });">NetShare</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Pagetailor" src="research.php_files/pagetailor.png" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/9?fragment=yes&amp;', { method: 'get' });">PageTailor: Reusable End-User Customization</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Uoft" src="research.php_files/uoft_005.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/16?fragment=yes&amp;', { method: 'get' });">Precise Traffic Generator</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Amigo" src="research.php_files/amigo.gif" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/6?fragment=yes&amp;', { method: 'get' });">Proximity-Based Secure Communication</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Uoft" src="research.php_files/uoft_004.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/26?fragment=yes&amp;', { method: 'get' });">Repeat After Me “I am a Human’’: A Speech Based Method to Detect Spammers in VOIP</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Photo_sharing" src="research.php_files/photo_sharing.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/12?fragment=yes&amp;', { method: 'get' });">Rethinking Access Control With Social Networks</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Buffer-sizing" src="research.php_files/Buffer-Sizing.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/14?fragment=yes&amp;', { method: 'get' });">Sizing Buffers in Internet Routers</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Snowbird3" src="research.php_files/snowbird3.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/8?fragment=yes&amp;', { method: 'get' });">Snowbird: Bimodal Applications Made Easy</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Snowflock" src="research.php_files/snowflock.png" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/1?fragment=yes&amp;', { method: 'get' });">SnowFlock: Swift VM Cloning for Cloud Computing</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Timbremap" src="research.php_files/timbremap.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/18?fragment=yes&amp;', { method: 'get' });">Timbremap: Touch-Enabled Maps for the Visually-Impaired </a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/27?fragment=yes&amp;', { method: 'get' });">Verifying File System Consistency at Runtime</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Vmgl" src="research.php_files/vmgl.gif" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/7?fragment=yes&amp;', { method: 'get' });">VMGL: OpenGL Hardware 3D Acceleration for Virtual Machines</a>
+      
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      
+         <img alt="Uoft" src="research.php_files/uoft_003.jpg" height="75">
+      
+    </td>
+    <td>
+      
+        
+        <a href="javascript:{}" onclick="new Ajax.Updater('main2', '/projects/15?fragment=yes&amp;', { method: 'get' });">Wireless Multihop Networks</a>
+      
+    </td>
+  </tr>
+
+</tbody></table>
+
+
+
+</div>
+       
+      
+	  <div id="recont">
+      
+        <p>&nbsp;</p>
+      
+      
+      </div>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p><span></span></p>
+  </div>
+  </div>
+<!-- end #main -->
+
+    
+  <div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end #sidebar2 -->
+<!-- end #content -->
+<div id="footer">
+	
+<div>
+<p id="legal"><img src="research.php_files/dots.gif" height="1" width="950"></p><br>
+<p id="links"><a href="http://csng.cs.toronto.edu/index.php" target="_parent">Home</a> | <a href="http://csng.cs.toronto.edu/people.php" target="_parent"> People</a> | <a href="http://csng.cs.toronto.edu/news.php" target="_parent">News</a> | <a href="http://csng.cs.toronto.edu/research.php" target="_parent">Research</a> | <a href="http://csng.cs.toronto.edu/courses.php" target="_parent">Courses</a> | <a href="http://csng.cs.toronto.edu/events.php" target="_parent">Events</a> |  <a href="http://csng.cs.toronto.edu/admissions.php" target="_parent">Admissions</a> |  <a href="http://csng.cs.toronto.edu/links.php" target="_parent">Links</a> | <a href="http://csng.cs.toronto.edu/contact.php" target="_parent">Contact</a></p><br>
+
+<p>Copyright © Computer Systems &amp; Networks Group. All Rights Reserved.</p><br></div>
+
+</div>
+
+
+
+</body></html>

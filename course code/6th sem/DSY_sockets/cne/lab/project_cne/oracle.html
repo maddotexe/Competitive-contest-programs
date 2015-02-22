@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Project 1</title>
+<meta name="description" content="Project 1">
+<meta name="keywords" content="oracle">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+</head>
+<body lang="EN">
+ CS 4514 Computer Networks
+WPI, B Term 1998<br>
+Craig E. Wills
+Programming Assignment 2 (30 pts)<br> 
+Assigned: Thursday, October 29, 1998
+Due: Friday, November 13, 1998
+<p>
+</p><h1><a name="SECTION00010000000000000000">Accessing User Services using Dynamic Binding</a></h1>
+<p>
+This assignment serves as an introduction to client-server programming
+using the TCP/IP protocols. In this assignment, you will write both a
+client and a server.  Your client and server will communicate using
+TCP, and your server may implement any service you choose.  The ground
+rules are simple: the server reads and writes data to and from the TCP
+connection.  The server may prompt the client for input, or simply
+print a random message. Once you have debugged the server, it executes
+in background (even after you log out) waiting for service requests
+from a client.
+</p><p>
+To access a service, the client opens a TCP connection to the server, sends
+and receives data, and then closes the connection.  Conceptually, the
+client acts as a pipe between your terminal and the server, copying data
+sent by the server to standard output and sending data read from standard
+input to the server.  The client terminates the connection with the server
+when it receives an end-of-file from either the server or standard input.
+</p><p>
+The above scenario omits a key aspect of client-server programming: How
+does the client find out <i>where</i> the server is? That is, what
+transport-level address (Internet address and port number) should the
+client connect to?
+</p><p>
+One solution is to use a name server that dynamically maps service
+names into their transport-level addresses. We will supply you with a
+such a server, called <i>oracle</i>, allowing you to register the
+service you provide and advertise it to other students in the class.
+Conceptually, the <i>oracle</i> is like the white pages in your phone
+book.  A server registers the name and transport address of its
+service in the phone book, and clients use the phone book to map
+service names to transport addresses.
+</p><p>
+When your server starts, the operating system will assign it an unused port
+number (e.g., XXX) on which it can wait for incoming connection requests.
+The server then advertises the availability of its service by sending a
+short message to the <i>oracle</i> containing the name of the service (e.g.,
+``daytime'') together with the transport address (host number and port
+XXX). The oracle server records the name-to-address mapping in its local
+database.
+</p><p>
+When a client wishes to connect to a server, it first sends a message
+containing the desired service name (e.g., ``daytime'') to the <i>
+oracle</i>, and the oracle returns a message with the appropriate transport
+address (e.g., XXX).  The client then opens a TCP connection to that
+service.  Exact details for communicating with the <i>oracle</i> are
+described below.
+</p><p>
+</p><h1><a name="SECTION00020000000000000000">Client-Server Overview</a></h1>
+<p>
+</p><h2><a name="SECTION00021000000000000000">Client</a></h2>
+<p>
+The client accepts the following set of commands from standard input:
+</p><dl><dt><strong><i>list</i></strong><i>
+</i></dt><dd><i>: Send a message to the <i>oracle</i> requesting a
+listing of all the services currently available.
+</i></dd><dt><i><strong><i>connect service</i></strong><i>
+</i></i></dt><dd><i><i> <i>[uid]</i>: Open a connection to the server providing
+service <i>service</i>. <i>Service</i> is the user-friendly service name
+registered with the <i>oracle</i>.  An optional argument <i>uid</i> is
+used to distinguish between services provided by different users
+having the same name.  That is, multiple users may register services
+having the same name.
+</i></i></dd><dt><i><i><strong><i>quit</i></strong><i>
+</i></i></i></dt><dd><i><i><i>: terminate the client program.
+<p>
+ </p></i></i></i></dd></dl><i><i><i>
+<p>
+When the client wishes to connect to a server, it traces the following
+steps:
+</p><ol><p></p><li> Contact the <i>oracle</i> to find the transport-level address (host
+ name and port number) of the service you are trying to locate
+(details below).<p></p></li><li> Open a TCP connection to the server supplying the desired service.<p></p></li><li> Copy standard input to the server, and copy all data sent by the
+server to standard output.<p></p></li><li> After receiving an end-of-file from <i>either</i> standard input
+or the TCP connection, close the TCP connection.  Note: if your client
+receives an end-of-file from standard input, it should terminate the
+connection to the server, but should continue reading additional
+commands from standard input because the user may want to connect to
+another service (see <i>clearerr(3)</i>).
+</li></ol></i></i></i><h2><a name="SECTION00022000000000000000">Server</a></h2>
+<p>
+The server traces the following steps when making a service available:
+</p><p>
+</p><ol><p></p><li> Create a TCP socket (similar to a  UNIX file descriptor -- see
+<i>socket(2)</i>.)<p></p></li><li> Bind the socket to a <i>sockaddr_in</i> structure with family AF_INET,
+port number 0, and address INADDR_ANY.  This directs the Unix kernel to
+accept TCP connection requests from any machine (INADDR_ANY) in the
+Internet, and specifying a port number of 0 (meaning ``don't care'')
+directs the kernel to allocate an unused port number (see <i>
+bind(2)</i>).<p></p></li><li> Extract the port number allocated in the previous step (see
+<i>getsockname(2)</i>), and fetch the Internet address of the host on
+which your server resides (see <i>gethostname(2) and <i>
+gethostbyname(3)</i></i>.  Fill in the appropriate fields in the <i>om</i>
+structure (described below) and register the service with <i>
+oracle</i>.<p></p></li><li> Specify the backlog of incoming connection requests you are
+willing to tolerate (see <i>listen(2)</i>).<p></p></li><li> Finally, wait for a connection request and service it.  When you
+have serviced the request, repeat the process by waiting for the next
+connection attempt (see <i>accept(2)</i>, and <i>close(2)</i>).
+</li></ol><h1><a name="SECTION00030000000000000000">Interacting With Oracle</a></h1>
+<p>
+<i>Oracle</i> resides on machine <i>garden</i> at well-known UDP port <i>
+netoracle</i>.  All communication with <i>oracle</i> is through UDP messages
+containing a structure called an <i>om</i> (for ``oracle message'',
+pronounced ``ohhmm''), whose definition can be found in the file <tt>
+oracle.h</tt> in <tt>/cs/cs4514/pub/lib</tt>. The file is reproduced
+below:
+</p><p>
+<tt></tt></p><pre><tt># define luid 8
+# define cchMaxServ 10
+# define cchMaxDesc 40
+# define verCur 'C'
+
+enum cmd {
+  cmdErr,                       /* An error occurred. See sbDesc for details */
+  cmdGet,                       /* Get the address of a service */
+  cmdAckGet,                    /* ACK for cmdGet message */
+  cmdEnd,                       /* Last response to a cmdGet message */
+  cmdPut,                       /* Register a new service  */
+  cmdAckPut,                    /* ACK for cmdPut message */
+  cmdClr,                       /* Unregister a service */
+  cmdAckClr                     /* ACK for cmdClr message */
+};
+
+struct om {                     /* oracle message */
+  char ver;                     /* version number of this structure */
+  enum cmd cmd;                 /* command/reply code */
+  char sbDesc[cchMaxDesc];      /* description of service (or error reply) */
+  char uid[luid];               /* user id (login id) of requester/provider */
+  char sbServ[cchMaxServ];      /* name of service requested/provided */
+  struct sockaddr_in sa;        /* socket addr where service is available */
+  unsigned long ti;             /* time of registration */
+};
+# define lom (sizeof (struct om))</tt></pre>
+<p>
+</p><h2><a name="SECTION00031000000000000000">Locating a Service</a></h2>
+<p>
+To find a service, your client program fills in the fields of the <i>
+om</i> structure as follows:
+</p><dl><dt><strong><i>ver</i></strong><i>
+</i></dt><dd><i>: Always <i>verCur</i> in all messages.
+</i></dd><dt><i><strong><i>cmd</i></strong><i>
+</i></i></dt><dd><i><i>: <i>cmdGet</i>.
+</i></i></dd><dt><i><i><strong><i>uid</i></strong><i>
+</i></i></i></dt><dd><i><i><i>: The Unix user id of the user offering the service.
+If the client doesn't care which <i>uid</i> to use, it sets this field
+to the NULL string (NULL character in first byte).
+</i></i></i></dd><dt><i><i><strong><i>sbServ</i></strong><i>
+</i></i></i></dt><dd><i><i><i>: The name of the service being searched for (filled
+in by the client).  To get a listing of all available services, set
+<i>sbServ</i> to the NULL string (NULL character in first byte).
+<p>
+ </p></i></i></i></dd></dl><i><i>
+<p>
+In response to a <i>cmdGet</i> message, <i>oracle</i> returns two or
+more messages.  Response messages have a <i>cmd</i> type of <i>
+cmdAckGet</i>, and the end of <i>cmdAck</i> responses is signaled by a
+<i>cmdEnd</i> message. <i>CmdEnd</i> messages do not contain the name of
+a service; they simply signal the end the last response.
+If only one service matches the client's
+request, the server will return two messages: a <i>cmdAckGet</i>,
+followed by a <i>cmdEnd</i>.  Each <i>cmdAck</i> message contains the
+following fields:
+</p><dl><dt><strong><i>sbDesc</i></strong><i>
+</i></dt><dd><i>: A sentence describing the service.  Your server uses
+this field when registering a service, and the <i>oracle</i> returns it
+in response to <i>cmdGet</i> queries.  When locating a service, the
+field should contain all zeros.
+</i></dd><dt><i><strong><i>uid</i></strong><i>
+</i></i></dt><dd><i><i>: The user id providing the service (e.g, ``cew'')
+</i></i></dd><dt><i><i><strong><i>sbServ</i></strong><i>
+</i></i></i></dt><dd><i><i><i>: The name of the service (e.g., ``daytime'').
+</i></i></i></dd><dt><i><i><i><strong><i>sa</i></strong><i>
+</i></i></i></i></dt><dd><i><i><i>: The transport address at which the service resides. 
+</i></i></i></dd><dt><i><i><i><strong><i>ti</i></strong><i>
+</i></i></i></i></dt><dd><i><i><i>: The time at which the service was registered.
+<p>
+ </p></i></i></i></dd></dl></i></i><h2><a name="SECTION00032000000000000000">Registering a Service with  Oracle</a></h2>
+<p>
+When the server wishes to register a service with the <i>oracle</i>, it
+sends an <i>om</i> message with the following fields:
+</p><dl><dt><strong><i>cmd</i></strong><i>
+</i></dt><dd><i>: <i>cmdPut</i>, to register a service.
+</i></dd><dt><i><strong><i>uid</i></strong><i>
+</i></i></dt><dd><i><i>: The login id of the user registering the service (see
+<i>getuid(2)</i> and <i>getpwent(3)</i>).
+</i></i></dd><dt><i><i><strong><i>sbServ</i></strong><i>
+</i></i></i></dt><dd><i><i><i>: One word name of the service (e.g., ``daytime'').
+</i></i></i></dd><dt><i><i><i><strong><i>sbDesc</i></strong><i>
+</i></i></i></i></dt><dd><i><i><i>: A brief description of the service.
+</i></i></i></dd><dt><i><i><i><strong><i>sa</i></strong><i>
+</i></i></i></i></dt><dd><i><i><i>: The transport level address at which the server can be reached.
+<p>
+ </p></i></i></i></dd></dl><i><i><i>
+<p>
+In response to a <i>cmdPut</i> message, <i>oracle</i> returns a message
+of type <i>cmdAckPut</i> if the registration succeeds.  In the case of
+errors, the <i>oracle</i> returns a message of type <i>cmdErr</i>, and
+the sets the field <i>sbDesc</i> to contain a short explanation of the
+error.
+</p></i></i><p><i><i>
+</i></i></p><h2><a name="SECTION00033000000000000000">Exchanging Datagrams with the  Oracle</a></h2>
+<p>
+</p><ol><p></p><li> Create a UDP socket (see <i>socket(2)</i>).<p></p></li><li> Get the Internet address and port number of the oracle (see
+<i>gethostbyname(3)</i> and <i>getservbyname(3)</i>).<p></p></li><li> Open a UDP connection to the <i>oracle</i> (see <i>connect(2)</i>).<p></p></li><li> Send an <i>om</i> message of the appropriate type to the oracle
+(see <i>send(2)</i>).<p></p></li><li> Wait for an <i>om</i> reply from the oracle (see <i>recv(2)</i>).
+</li></ol><h1><a name="SECTION00040000000000000000">Basic Objective</a></h1>
+<p>
+The basic objective of the assignment is to build a client that can obtain
+a list of services from the oracle server and connect to a simple service
+(one that just returns output such as <em>daytime</em>).  Your server should
+be able to register itself with the oracle server and return information
+when a client connects to it.
+</p><p>
+</p><h1><a name="SECTION00050000000000000000">Additional Work</a></h1>
+<p>
+Completion of the basic objectives is worth 20 of the 30 points for the
+assignment.  For the additional points of the project, your client will
+need to be able to handle connect to multiple services within a session (in
+a serial manner, not in parallel).  Your client should also work well both
+with services that require interaction (both input and output) as well as
+simple services just producing output.  To obtain additional credit for
+your server, it must be interactive in that it both requires input and
+produces output.
+</p><p>
+</p><h1><a name="SECTION00060000000000000000">General Advice</a></h1>
+<p>
+Nearly all system calls and library routines return some form of error
+code if the operation was not successful. <b>You must check the
+return value from every routine for an error code</b>.
+</p><p>
+We suggest the following steps:
+</p><ol><p></p><li>  Start small. Write a procedure that sends a datagram to the <i>
+oracle</i>, and receives a datagram response from the <i>oracle.</i> If
+you made the mistake, the oracle will return an <i>om</i> with <i>
+cmd</i> set to <i>cmdErr</i>, and <i>sbDesc</i> will contain a brief
+description of the problem.<p></p></li><li> Write a client that connects to a server registered with the
+server. We will register a few simple commands (``daytime'' and
+``finger'' seem to be staples) that you can use to test your client.<p></p></li><li> Once you have the client working, begin work on the server.
+</li></ol>
+<p>
+You have two weeks in order to complete the project.  There are
+three parts to the project you should have each part done in less than
+one week to stay on schedule.  In other words your client routine should be
+able to obtain a listing of all services no later than November 4th.
+</p><p>
+As an aid to debugging, as well as to trace use of your server, you
+should print trace output when connections are made. For example, you
+might print the host name and port number of every user that connects
+to your server, along with the time of the connection.
+</p><p>
+Requests to the oracle are actually a bit more general than we've
+described so far. Regular expressions can be used as service names or
+users ids to effect a kind of ``wild-search'' for services. For
+example, specifying a service name of ``.*'' matches all services.
+Specifying a user name of ``...''  matches all services provided by
+users with three-character ids. The format of regular expressions is
+the same as that of <i>ed(1)</i>.
+</p><p>
+Use your imagination and creativity in designing server programs. ``Neat''
+servers are popular for testing by clients written by your peers.
+</p><p>
+The following library procedures and system calls will be helpful:
+<i>clearerr(3)</i>, <i>gethostname(2)</i>, <i>listen(2)</i>, <i>
+close(2)</i>, <i>getpwent(3)</i>, <i>getuid(2)</i>, <i>send(2)</i>, <i>
+recv(2)</i>, <i>getservbyname(3),  gethostbyname(3),
+gethostbyaddr(3), getsockname(2), bind(2), socket(2), connect(2),
+accept(2)</i>, <i>listen(2)</i> and <i>select(2)</i>.
+</p><p>
+For more information on how the Unix networking-related library routines
+and system calls, see the handout from class, an excerpt from the book <i>
+Unix</i> <i>Networking</i>, which explains how to use the Unix library
+routines.
+</p></i></body></html>

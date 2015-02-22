@@ -1,0 +1,182 @@
+a {
+	color: #BF5900;
+	text-decoration: none;
+}
+a:hover {
+	color:#D98B48;
+	text-decoration: underline;
+}
+a img { border: none; }
+body {
+  font-family: Tahoma, Verdana, Helvetica, sans-serif;	
+	font-size: 12pt;
+}
+
+h1, h2 {
+  font-family: "Myriad Pro", Tahoma, sans-serif;
+  color: #000000;
+  font-weight: bold;
+}
+h1 {
+	text-align: center;
+	font-size: 24pt;
+	color: #BF5900;
+	text-shadow: 0px 0px 1px #000000;	
+}
+h2 {
+  border-bottom: 2px solid #D98B48;
+	font-size: 18pt;
+  margin: 0 0 0.75em 0; 
+}
+h3 {
+	font-size: 14pt;
+	margin-bottom: 5px;
+}
+h3 + p, h3 + ul, h3 + ol {
+  margin-top: 0;
+}
+
+td {
+  vertical-align: top;
+}
+
+
+.announcement {
+  font-size: 13pt;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #D98B48;
+}
+.announcement h3 {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.announcement .date {
+  float: right;
+  font-size: 12pt;
+}
+.announcement dt {
+  float: left;
+  width: 6em;
+}
+
+
+.handouts li {
+  line-height: 1.5em;
+}
+.handouts > ul > li > a::before {
+  content: "[ ";
+  color: #000000;
+  text-decoration: none;
+}
+.handouts > ul > li > a::after {
+  content: " ]";
+  color: #000000;
+  text-decoration: none;
+}
+.note {
+  font-style: oblique;
+}
+.note:before {
+  content: "NOTE: ";
+}
+
+
+.basic-info > span.time {
+  display: block;
+}
+.basic-info .location {
+  display: block;
+}
+.basic-info .units {
+  display: block;
+}
+.basic-info .units::before {
+  content: "Units: ";
+}
+
+
+.resources ol {
+  padding: 0 0 0 10px;
+  list-style: none;
+}
+
+
+.references li {
+  padding-bottom: 3px;
+}
+
+.references li.starred {
+ 	list-style-image: url("star.png");
+}
+
+.bibliography li {
+  padding-bottom: 10px;
+}
+.bibliography .authors::after {
+  content: ". ";
+}
+.bibliography .title {
+  font-style: oblique;
+}
+.bibliography .title:after {
+  content: ". ";
+  font-style: normal;
+}
+.bibliography .publisher::after {
+  content: ", ";
+}
+.bibliography .year::after {
+  content: ". ";
+}
+.bibliography .comment {
+  display: block;
+  padding-top: 2px;
+}
+
+ul.pitches {
+	padding: 0;
+}
+ul.pitches > li {
+	list-style: none;
+  padding-bottom: 12px;
+}
+ul.pitches ul.authors {
+	padding: 0 0 5px 0;
+}
+
+ul.pitches ul.authors li {
+	display: inline;
+	list-style: none;
+	font-style: oblique;
+}
+ul.pitches span.athena::before {
+	padding-left: 3px;
+	content: "<";
+}
+ul.pitches span.athena::after {
+  content: "@mit>";
+}
+ul.pitches ul.authors li::after {
+	content: ",";
+	padding-right: 5px;
+}
+ul.pitches ul.authors li:last-child::after {
+  content: "";
+	padding-right: 0;
+}
+ul.pitches span.title {
+	display: block;
+	font-weight: bold;
+	font-size: 13pt;
+}
+
+dl.special-lecture dt {
+	font-weight: bold;	
+	float: left;
+	width: 12em;
+}
+ul.special-lecture {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 0;
+}

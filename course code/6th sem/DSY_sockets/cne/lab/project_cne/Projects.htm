@@ -1,0 +1,527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Student Projects</title>
+	<link href="Projects_files/dotCrimestyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>
+        <a href="http://www.dotcrimemanifesto.com/Default.htm">
+        <img class="rightfloat" alt="" src="Projects_files/dotcrimecover_title.jpg" style="width: 327px; height: 135px;"></a>Student Projects</h1>
+  <p>
+        Several people have asked me to suggest student projects based on the ideas in the
+        manifesto.</p>
+	<p>
+        We don't just need programming skills to change the Internet. The Internet has a 
+		billion users, we need to consider the economic factors in order to make change. 
+		We need to get the usability engineering right. Consequently, many of these 
+		projects could be turned into an economics or usability project.</p>
+	<p>
+        If you decide to work on these projects, please let me know and I will add a 
+		link to your project page if you have one.</p>
+	<p>
+        Student projects can change the world: in 1993 the World Wide Web phenomenon 
+		started with a browser that was essentially a student project at NCSA. Mosaic 
+		was not the first Web browser by a long way but it was the one that began the 
+		breakthrough. Mosaic had that effect because the usability factors were right - 
+		Mosaic was the first Web browser that worked out of the box rather than 
+		requiring a day of debugging, it was the first to have a professional look and 
+		feel.</p>
+	<p>
+        I have included references to sections of the dotCrime Manifesto (dCM) but these 
+		should be taken as the starting point for a design rather than a mandate. </p>
+
+    <h2>
+        Build Projects</h2>
+	<p>
+        If we are going to secure the Internet we need to build the tools to put ideas 
+		into practice. These projects should all be suitable for final year projects or 
+		group projects for a number of students.</p>
+	<p>
+        Note that while I have written open source code and many of the resources I 
+		point to are open source, this does not mean that there is no value in working 
+		from proprietary systems.&nbsp; I give open source resources because these 
+		provide the quickest start. If there is a thunderbird extension available, 
+		please consider developing an extension for Outlooor Notes k rather than 
+		producing a second one for the sake of it. There are important skills to be 
+		learned through both approaches. If you become a programmer you will inevitably 
+		find yourself in situations where you have to work with a system where you 
+		either don't have the source or find it unreadable. </p>
+    <h3>
+        Reverse Firewall (Programming)</h3>
+	<dl>
+		<dt>
+			<img class="rightfloat" alt="" src="Projects_files/wrt54g.jpg" style="width: 170px; height: 156px;">Objective</dt>
+	<dd>
+		Develop a reverse firewall (dCM Ch. 9) for use in a 
+		residential or enterprise environment. Evaluate the effectiveness and user 
+		impact of different reverse firewall rules. Consider how the rules might need to 
+		be adapted over time as applications such as video on demand and online gaming 
+		are deployed.</dd>
+	<dd>
+		All network protocols have control elements and data elements. It is my 
+		hypothesis that while increased end user activity leads to increased demand on 
+		both, the demand on the data channel accelerates at a much faster rate than the 
+		demand on the control channel.
+	</dd>
+	<dt>Resources</dt>
+	<dd>
+		Many WiFi routers are based on open source operating systems. The 		
+		<a href="http://www.wi-fiplanet.com/tutorials/article.php/3562391">Linksys 
+		WRT54G</a> appears to be the current favorite for modding projects but it is not 
+		the only option. One important caveat to bear in mind is that consumer 
+		appliances are not designed for use as a development testbed and may not survive 
+		repeated attempts to program the flash memory. A desktop Linux box is likely to 
+		provide a more robust development environment.</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>What are the characteristics of typical residential, commercial, educational 
+				Internet use?</li>
+			<li>Which characteristics provide the most leverage when implemented in a gateway 
+				device with limited computing power?</li>
+			<li>How does a reverse firewall affect the value of a bot on the underground market?</li>
+			<li>What impact does your reverse firewall have on a residential user? a gamer? a 
+				mail server? a university department?</li>
+			<li>How might the IPv6 transition affect your solution?</li>
+		</ul>
+	</dd>
+	</dl>
+    <h3>
+        		IPv6 Transition-Box (T-box) (Programming, Economics)</h3>
+        		<dl>
+		<dt>Objective</dt>
+	<dd>
+		The Internet as originally designed only has room for 4 billion users. We 
+		currently have over a billion users and we are running out of IPv4 address space 
+		really fast.</dd>
+	<dd>
+		Develop a network gateway device that transparently supports transition to IPv6 
+		<span style="font-style: italic">without any end user intervention</span>.</dd>
+	<dd>
+		In order for the transition to be genuinely transparent it must be possible for 
+		IPv4 and IPv6 to co-exist on the network side of the gateway. The device must be 
+		capable of working when it has an IPv4 address assigned or just IPv6 access and 
+		some form of IPv4 via a NAT.</dd>
+	<dt>Resources 	</dt>
+	<dd>
+						The IETF has discussed IPv6 extensively, various assertions have been made to the effect that 
+						this is a solved problem. I strongly suspect that the planned IPv6 outage at the 
+						Philadelphia IETF is going to demonstrate that this is not the case.</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>Test as many Internet applications as you can, what types of application work, 
+				which do not?</li>
+			<li>Suggest ways to design Internet applications that would assure correct 
+				opperation when behind a T-box.</li>
+			<li>(Economics) Find as many IPv6 transition plans as you can. These should include 
+				the 'flag day' when everyone changes to IPv6 immediately, hyperNAT in which ISPs 
+				share a single IPv4 address amongst many users. Consider the economic 
+				consequences of each. What are the incentives for the adopting parties?</li>
+		</ul>
+	</dd>
+	</dl>        
+        
+        
+       <h3> Incident Handling   </h3>
+    	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Implement a peer to peer incident handling protocol (dCM Ch. 9).</dd>
+	<dd>
+		PINCH is a proposal I made to implement the IETF INCH protocol in a peer to peer 
+		fashion. When a site received an attack purportedly from IP address X it would 
+		discover an incident reporting service using SRV records in the reverse DNS.</dd>
+	<dt>Resources</dt>
+	<dd>
+		IETF INCH. Also consider how you might advertise an incident reporting mechanism 
+		for attacks against DKIM.</dd>
+	<dt>Experiments and further work.</dt>
+	<dd>
+		<ul>
+			<li>Set up a honeypot network, collect incidents from it<ul>
+				<li>What does the information tell you about the attack</li>
+				<li>How can you use it to effect a response</li>
+				</ul>
+			</li>
+			<li>Denial of service attacks frequently involve spoofed source address packets, how 
+				might these be addressed?<ul>
+					<li>How can you use network topology to identify a party that may be usefully 
+						informed?</li>
+				</ul>
+			</li>
+			<li>Attackers may make malicious incident reports and attempt DDoS attacks on the 
+				incident handling servers<ul>
+					<li>How might you address this problem.</li>
+				</ul>
+			</li>
+		</ul>
+	</dd>
+	</dl>    
+        
+<h3>           Usable Email Security Client</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Extend an existing mail user agent (MUA) to provide usable security features 
+		(dCM ch 13).</dd>
+	<dd>
+		The client might be a desktop client or a Webmail service. Secure letterhead 
+		features might be implemented via the PKIX logotype mechanism or be supplied by 
+		an external feed.</dd>
+	<dd>
+		The minimum components you would need to implement an edge-only client are a 
+		DKIM signature verification module, an automatic configuration module using DNS 
+		SRV records and a key discovery module. To implement a full end-to-end model you 
+		would need to add an XKMS client.</dd>
+	<dt>Resources</dt>
+	<dd>
+		My platform of choice for this would probably be Mozilla Thunderbird, the code 
+		is open source, there is a large user base and it supports a plug in 
+		architecture. The only downside to this approach is that the component model is 
+		pretty ferocious and intollerant of the slightest mistake. Implementing DKIM 
+		efficiently will require a code component.</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>(Usability) How do users react to your email client, are the security features<ul>
+				<li>Easy to understand?</li>
+				<li>Intrusive?</li>
+				<li>Effective?</li>
+				</ul>
+			</li>
+			<li>(Security) How do the usability features affect the security of the client?<ul>
+				<li>Do they create new opportunities for the attacker?</li>
+				</ul>
+			</li>
+			<li>(Design) Design a protocol for registering and managing end user keys based on 
+				XKMS or WS-Trust</li>
+		</ul>
+	</dd>
+	</dl>    <h3>
+        Usable Email Security XKMS Server</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Build an XKMS server to support the Usable Email Security Client.</dd>
+		<dd>
+			The first stage would be to support key registration and discovery. This would 
+			allow the end user to generate a public key pair on their client and register it 
+			with the XKMS service.</dd>
+		<dd>
+			The second (harder) stage would be to develop an XKMS validate service that&nbsp; 
+			is capable of collecting data from a complex X.509 PKIX based infrastrucure such 
+			as the US government federal bridge CA.</dd>
+	<dt>Resources</dt>
+	<dd>
+		XKMS is a W3C standard.</dd>
+	<dd>
+		There are many Web Services resources around. You may wish to take a look at the 
+		Higgins project which I am told supports some XKMS protocol features. It also 
+		supports WS-Trust.</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>What was missing from the specifications documents?</li>
+			<li>Analyze the security of your design<ul>
+				<li>What components are trusted? How is this trust assured?</li>
+				<li>How is communication with the service bootstraped?</li>
+				<li>How might an attacker introduce a bogus key</li>
+				</ul>
+			</li>
+			<li>Exchange signed, encrypted email with the federal bridge</li>
+		</ul>
+	</dd>
+	</dl>
+    <h3>
+        Unified Identity Server</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Build a unified identity server (dCM Ch 14-15).</dd>
+	<dd>
+		Extend an existing email, instant messaging and VOIP application to make use of 
+		the identity server.</dd>
+	<dd>
+		Implement systems to import social networking data from existing sources (linked 
+		in, FOAF etc).</dd>
+	<dd>
+		Develop a mitigation strategy for unwanted communication (spam, non-priority).</dd>
+	<dt>Resources</dt>
+	<dd>
+		The OpenID, SAML and CardSpace communities all have developer networks. They are 
+		the best place to start from.</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>How effective is the use of social networking to mitigate spam?</li>
+			<li>(Economics) Design a strategy to break a proprietary lock-in effect in a social 
+				network<ul>
+					<li>Test it</li>
+				</ul>
+			</li>
+		</ul>
+	</dd>
+	</dl>
+    <h3>
+        Domain Centric Administration</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Implement a domain centric administration server and clients.</dd>
+		<dd>
+			Enable existing legacy applications and appliances to automatically configure 
+			themselves.</dd>
+	<dt>Resources</dt>
+	<dd>
+		For a first pass implementation I would use either Linux or Windows Server as 
+		the base. Using Windows server would allow for the rather interesting 
+		possibility of using a Windows Home Server as the hub of a home network.</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>Compare the domain centric approach to peer-to-peer approaches such as uPNP and 
+				Bonjour<ul>
+					<li>What are the scaling properties for networks of 10, 100, 1000 machines?</li>
+					<li>How practical are the architectures in a home environment? enterprise 
+						environment?</li>
+				</ul>
+			</li>
+			<li>The network should continue to run even when a server fails<ul>
+				<li>Design a quorum based protocol (c.f. DEC-Cluster) to support transparent 
+					fallover</li>
+				</ul>
+			</li>
+		</ul>
+	</dd>
+	</dl>
+    <h3>
+        Default Deny Infrastructure</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Implement a Default Deny Infrastructure.</dd>
+	<dd>
+		Develop a maintenance tool that allows an administrator to quickly configure 
+		existing network devices and computers by creating an installing a device 
+		certificate tied to the MAC address.</dd>
+	<dd>
+		Develop a systems operation console for the home or the enterprise. The console 
+		must detect the addition of a new device, authenticate it, determine if it is in 
+		the authentication database, determine the policy rules to be deployed, push 
+		them out to the hubs and routers.</dd>
+	<dt>Resources</dt>
+	<dd>
+		The main network authentication protocol that is emerging is 802.1X. 	</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>(Usability) How long does it take to configure a machine?</li>
+			<li>(Usability) Could a consumer be expected to do this?</li>
+			<li>(Robustness) How does your network cope when a machine fails?<ul>
+				<li>Is the failure detected?</li>
+				<li>Is a remedy applied?</li>
+				</ul>
+			</li>
+		</ul>
+	</dd>
+	</dl>    
+    <h3>
+        Parametric Device Driver</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Develop a device driver for Windows, OS/X, Linux that supports a wide range of 
+		similar devices using a device profile provided by the machine.</dd>
+	<dd>
+		Ideally it should be possible to support all three operating systems using a 
+		single, declarative device description that could be provided by the device 
+		itself, either directly or by (URI) reference.</dd>
+	<dt>Resources</dt>
+	<dd>
+		The Semantic Web is likely to provide a lot of useful support here. You will 
+		need to develop an ontology of device characteristics, and capabilities. The 
+		ontology must be adaptable over time as new capabilities emerge (e.g. 1, 3, 6, 
+		12 color printers)</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>(Economic) Consider the economic model for parametric drivers, who benefits, who 
+				might lose?</li>
+		</ul>
+	</dd>
+	</dl>
+    <h3>
+        NAT Compatible Video Conferencing</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Develop a Video Conferencing application that actually works through a NAT box 
+		without requiring specific configuration of the NAT box (e.g. forwarding of 
+		specific ports) or bridging through a NAT-free peer. You may use an external 
+		server to establish a communication session but not once the session is 
+		established.</dd>
+		<dd>
+			The protocol should allow multiple computers behind the same NAT box to have 
+			open sessions at the same time. The protocol must work when the NAT box 
+			implements stateful inspection filtering.</dd>
+		<dd>
+			Extend the protocol to add security enhancements (authenticity, 
+			confidentiality).</dd>
+	<dt>Resources</dt>
+	<dd>
+		H.264 has become the defacto standard for next generation compression, although 
+		it is encumbered there are open source toolkits for it (obdisclaimer, I take no 
+		responsibility for the licensing).</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>(Usability) Set up a video conference session with a relative who is at least 
+				60, has no specific computer expertise and is situated at least 1000 miles away 
+				at the time. The only communication tools you may use are a telephone, Web 
+				browser and your application. You may not assume that there is a direct IP 
+				connection at either end.</li>
+			<li>(Usability) Have your relative call a third person.</li>
+		</ul>
+	</dd>
+	</dl>
+	<h2>
+        Design Projects</h2>
+	<p>
+        These projects are similar to the build projects but provide more opportunity to 
+		apply design skills such as design of cryptographic algorithms and protocols.
+	</p>
+    <h3>
+        Meeting Scheduling Agent (Programing, Cryptography)</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Develop an agent for scheduling meetings between multiple parties using 
+		different universal identity services.</dd>
+	<dd>
+		The protocol should disclose the minimum possible information to each of the 
+		parties and to the scheduling agent itself.</dd>
+	<dt>Resources</dt>
+	<dd>
+		(none yet)</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>Analyze the security of the protocol<ul>
+				<li>What information can each party discover?</li>
+				</ul>
+			</li>
+			<li>(Usability) Test the usability of the system</li>
+		</ul>
+	</dd>
+	</dl>
+    <h3>
+        Open Source Signer Acceditation </h3>
+
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		A key principle in dCM is that all code that executes on a platform should be 
+		signed and accountable. The level of privileges granted to the running code 
+		being determined by the level of accountability established.</dd>
+	<dd>
+		Commercial code signing schemes are intended to establish accountability for 
+		commercial code developers. How can accountability be established in open source 
+		projects? How can injection of malicious code be avoided in large and small open 
+		source projects?</dd>
+	<dt>Resources</dt>
+	<dd>
+		(none yet)</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li></li>
+		</ul>
+	</dd>
+	</dl>
+        <h3>
+             Usable WiFi Connectivity</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Design a user interface for a wireless networking system that provides usable 
+		security with minimal user interaction while still providing for display of 
+		necessary legal notices, acceptance of terms etc.</dd>
+	<dt>Resources</dt>
+	<dd>
+		See evil WiFi Twin</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>Test the system out in a live environment that provides free WiFi connectivity 
+				(campus network, coffee shop)</li>
+		</ul>
+	</dd>
+	</dl>
+    <h3>
+        Unencumbered Document Rights Management</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Design an implement an end to end DRM scheme for document manaDesign 
+an implement an end to end DRM scheme for document management (Word, 
+		HTML, OOXML, etc) that is based on 20 year old technology.</dd>
+	<dd>
+		This is becomming a common real world problem due to the proliferation of 
+		patents, many of which add little or no value over earlier approaches. The 
+		signed assertion approach to DRM is in theory more powerful as it avoids the 
+		need for ubiquitous connectivity. But why do we need that today?</dd>
+	<dt>Resources</dt>
+	<dd>
+		<a href="http://portal.acm.org/citation.cfm?doid=191177.191225">Ford-Wiener</a> 
+		might be a useful starting point, although the work was done in 1994 and will 
+		therefore be encumbered for several years to come.</dd>
+	<dt>Experiments</dt>
+<dd>
+    <ul><li>(Usability) </li>
+		</ul>
+	</dd>
+	</dl>
+    <h2>
+        Research Projects</h2>
+	<p>
+        Some topics are large enough to require several years of serious, innovative 
+		thought. </p>
+    <h3>
+        				Trustworthy Linux / BSD</h3>
+        		<dl><dd>
+			Build certain trustworthy components into Linux or BSD.</dd>
+		<dd>
+			In particular it would be very nice in the context of an embedded device to be 
+			able to lock down the processor such that it was only possible to run code that 
+			is signed and trusted by the owner. The risk of malicious code being injected 
+			onto the machine is therefore avoided. Unix is used in a large number of 
+			embedded devices, if devices from coffee makers through to MRI scanners are 
+			vulnerable to code injection the consequences could be serious.</dd></dl>
+	
+    <h3>
+        BGP Security</h3>
+	<dl>
+		<dt>Objective</dt>
+	<dd>
+		Design a deployable architecture for BGP security</dd>
+	<dt>Resources</dt>
+	<dd>
+		Some security infrastructure is being deployed today, in particular digital 
+		certificates are being issued to holders of ASNs.</dd>
+		<dd>
+			A good place to start would be to talk to operators at an Internet backbone 
+			provider, find out how they actually resolve injection of bogus routes today.</dd>
+	<dt>Experiments</dt>
+	<dd>
+		<ul>
+			<li>Consider the economic properties, is the model deployable? What are the 
+				incentives?</li>
+		</ul>
+	</dd>
+	</dl>
+
+
+
+</body></html>

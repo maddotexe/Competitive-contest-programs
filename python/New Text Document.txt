@@ -1,0 +1,25 @@
+n = int(raw_input())
+while n:
+ import sys
+s = ''
+while 1:
+  c = sys.stdin.read(1)
+  if (c == ' '):
+   break;
+  s += c
+ n = int(s)
+ s = ''
+ while 1:
+  c = sys.stdin.read(1)
+  if (c == '\n'):
+   break;
+  s += c
+ m = int(s)
+ a=0
+ b=1
+ for i in range (2,n):
+  c = a + b +  i+1
+  a = b
+  b = c
+ n-=1
+print c% m+1

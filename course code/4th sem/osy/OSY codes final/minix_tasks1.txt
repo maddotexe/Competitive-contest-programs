@@ -1,0 +1,107 @@
+SAWAI SINGH
+minix tasks...
+
+
+boot d0p0
+find / -name cal.c
+
+"ctrl+w" for erase
+
+1. stty erase ^w
+
+
+change F6
+
+1. cd..
+2. cd /usr/src/servers/is
+3. vi dmp_kernel.c
+4. change in function "irqtab_dmp()" and save it 
+5. make 
+6. make install 
+7.reboot
+
+change cal
+
+1. cd /usr/src/commands/simple/
+2. vi cal.c
+3. change and save it;
+4. make
+5. make install
+6. reboot
+7.cal 20xx
+
+
+change rootbanner
+
+1. cd..
+2. cd /usr/src/kernel
+3. vi main.c
+4. change in "announce" 
+5. cd .. (go to src)
+6. make clean
+7. make
+8. make install
+9. reboot
+
+
+create user
+1. goto home
+2. make directory example "99"
+3. go to 99
+4. then write   adduser "username" other /home/99/"username"
+5. passwd "username"
+6. reboot 
+7. login with new user
+
+
+
+add system call
+
+1.  go to usr/src/servers/fs/vi table.c
+    and search unused slot
+    change there.. 
+
+    no-sys, /* slotNo = unused */    to
+    do_my call, /* slotNo = mycall */
+
+2.  go to usr/src/include/minix/vi callnr.h
+    search unused slot and write
+    #define MYCALL slotNo 
+
+3.  cd usr/src/serves/fs/vi proto.h
+    go to misc section
+    and write
+    _PROTOTYPE( int do_mycall, (void));
+
+4.  cd usr/src/servers/fs/ vi misc.c
+    write there
+    
+   /* do_my call*/
+   PUBLIC int do_mycall()
+   {
+   printf("message u want to print\n");
+   }
+
+   save and exit
+   
+5.  make
+
+6.  cd /usr/src/tools
+    make clean
+    make hdboot
+    reboot
+
+
+in fs "make"
+
+
+#include <stdio.h>
+#include <unistd.h>
+#include <lib.h>
+#include <stdlib.h>
+int main()
+{
+message m;
+_syscall(FS, unusedslot, &m);
+return 0;
+}

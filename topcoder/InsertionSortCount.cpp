@@ -1,0 +1,94 @@
+// BEGIN CUT HERE
+// PROBLEM STATEMENT
+// A sequence of distinct numbers A is going to be sorted using insertion sort. Insertion sort works as follows:
+
+insertion-sort(A)
+   initialize a new empty sequence R
+   for each number N in A (in the original order) do:
+      determine the index i in R where N should be inserted so that R remains sorted
+      move each element in R with index greater than or equal to i to the following index
+      set R[i]=N
+   return R
+
+For example, an insertion sort on {20,40,30,10} would produce the following states for R after each step:
+20          (first element is inserted at index 0)
+20,40       (inserting 40 at index 1 requires no moves)
+20,30,40    (30 is inserted at index 1, so 40 has to be moved)
+10,20,30,40 (10 is inserted at index 0, so 20, 30 and 40 have to be moved)
+In total, 4 moves were needed.
+Given a vector <int> A, which contains a sequence of distinct numbers, return the number of moves that would be performed by an insertion sort on A.
+
+
+DEFINITION
+Class:InsertionSortCount
+Method:countMoves
+Parameters:vector <int>
+Returns:int
+Method signature:int countMoves(vector <int> A)
+
+
+CONSTRAINTS
+-A will have between 1 and 50 elements, inclusive.
+-Each element of A will be between -1000 and 1000, inclusive.
+-All elements of A will be distinct.
+
+
+EXAMPLES
+
+0)
+{20,40,30,10}
+
+Returns: 4
+
+The example from the problem statement.
+
+1)
+{-1,1,0}
+
+Returns: 1
+
+Only one move needed to insert 0.
+
+2)
+{-1000,0,1000}
+
+Returns: 0
+
+Since elements are inserted in sorted order, all of them are appended at the end of R. Therefore, there's no need to move anything.
+
+// END CUT HERE
+#line 61 "InsertionSortCount.cpp"
+#include <sstream>
+#include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <utility>
+#include <set>
+#include <cctype>
+#include <queue>
+#include <stack>
+#include <numeric>
+
+using namespace std;
+
+class InsertionSortCount {
+	public:
+	int countMoves(vector <int> v) {
+		int sum = 0;
+		for (int i = 0; i < v.size(); i++) {
+			int j = 0;
+			while (j < i) {
+				if (v[j] > v[i]) sum++;
+				j++;
+			}
+			sort(v.begin(), v.begin() + i);
+		}
+		cout << sum << endl;
+		return sum;
+	}
+};

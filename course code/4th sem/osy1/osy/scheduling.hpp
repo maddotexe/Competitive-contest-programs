@@ -1,0 +1,7 @@
+#include "tools.hpp"
+#include "fcfs.hpp"
+#include "sjf_p.hpp"
+#include "sjf_np.hpp"
+#include "prio_p.hpp"
+#include "prio_np.hpp"
+#include "round_robin.hpp"

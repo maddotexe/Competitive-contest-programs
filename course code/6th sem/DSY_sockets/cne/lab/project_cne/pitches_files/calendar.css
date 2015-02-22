@@ -1,0 +1,35 @@
+#calendar table {
+  border: 1px solid #D9A87E;
+  border-spacing: 0;
+  border-collapse: true;
+  width: 100%;
+}
+#calendar th {
+  font-weight: bold;
+  font-size: 13pt;
+  color: #FFFFFF;
+  background-color: #BF5E0A;
+}
+#calendar th, #calendar td {
+  border-collapse: true;
+  border: 1px solid #D9A87E;
+	padding: 0px;
+}
+#calendar td {
+  font-size: 11pt;
+  padding: 2px 5px 4px 5px;
+}
+#calendar .day-empty, #calendar .schedule-H {
+  background-color: #F2DAC4;
+}
+#calendar .schedule-date {
+  font-size: 10pt;
+  color: #BF5E0A;
+}
+#calendar div.schedule-HD, #calendar div.schedule-RA,
+                           #calendar div.schedule-RD {
+  font-weight: bold;  
+}
+#calendar .schedule-H {
+	font-style: oblique;
+}

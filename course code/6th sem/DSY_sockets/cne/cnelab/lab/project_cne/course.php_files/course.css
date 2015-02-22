@@ -1,0 +1,294 @@
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++
+| LightNEasy Content Management System
+| Copyright 2007 - 2008 Fernando Baptista
+| http://LightNEasy.org
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| lightneasy.css Version 2.0
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Released under the terms & conditions of v2 of the
+| GNU General Public License. For details refer to
+| the included gpl.txt file or visit http://gnu.org
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+General classes for LightNEasy elements on page display */
+
+#mycontent {
+	width: 95%;
+	height: 600px;
+}
+
+#LNE_restrictlogin {
+	margin-top: 12px;
+}
+
+#LNE_restrictlogin form, #LNE_restrictlogin fieldset {
+	border: 0;
+	background: transparent;
+	text-align: center;
+}
+
+#LNE_restrictlogin input {
+	width: 50px;
+}
+
+#LNE_admininput {
+	width: 400px;
+	margin: 50px auto;
+}
+
+#LNE_admininput h2 {
+	margin-bottom: 14px;
+}
+
+#LNE_admininput a, #LNE_admininput img {
+	border: none;
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+}
+
+#LNE_admininput table.settings {
+	border: none;
+	width: 400px;
+	margin: 0 auto;
+}
+
+#LNE_admininput table.settings td {
+	width: 50px;
+	text-align: center;
+}
+
+#LNE_admininput input, #LNE_admininput textarea {
+	width: 200px;
+}
+
+#LNE_admininput fieldset {
+	background: #e0e0e0;
+	color: #000;
+	padding: 10px;
+	border: 0;
+}
+.LNE_title {
+	font-size: 2em;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.LNE_message {
+	display: block;
+	font-size: 1.2em;
+	color: #c00;
+	margin: 0 0 10px 0;
+}
+
+#LNE_admin {
+	width: 72px;
+}
+
+#LNE_admin table {
+	border: 0;
+}
+
+#LNE_admin td {
+	width: 24px;
+}
+
+.LNE_gallery {
+	margin: auto;
+}
+
+.LNE_gallery_img {
+	margin: 6px;
+	padding: 0;
+	border: 1px solid #000000;
+}
+
+.LNE_gallery fieldset, .LNE_gallery fieldset, .LNE_gallery table {
+	border: none;
+}
+
+/*gallery selection box */
+.LNE_select {
+	background: #d0d0d0;
+	border-top: 2px solid #f0f0f0;
+	border-left: 2px solid #f0f0f0;
+	border-right: 2px solid #b0b0b0;
+	border-bottom: 2px solid #b0b0b0;
+	padding-left: 4px;
+}
+
+/* Classes for showing downloads and links */
+#LNE_show {
+	width: 90%;
+	margin: auto;
+}
+
+#LNE_show h3 {
+}
+
+#LNE_show ul {
+	margin: 6px 6px 6px 0;
+}
+
+#LNE_show li {
+	list-style: none;
+	padding: 4px 0 4px 14px;
+	color: #303030;
+	background: #f0f0f0;
+}
+
+#LNE_show a {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#LNE_show a:hover {
+	text-decoration: underline;
+}
+
+/* Classes for contact form */
+#LNE_contact {
+	width: 95%;
+	margin: auto;
+}
+
+#LNE_contact form {
+	border: none;
+	background: transparent;
+}
+
+#LNE_contact fieldset {
+	background: transparent;
+	border: none;
+}
+
+#LNE_contact table  {
+	border: none;
+}
+
+/* Menus classes */
+.LNE_menu {
+}
+
+.LNE_menu_ul {
+}
+
+.LNE_menu_intend {
+	margin-left: 10px;
+}
+
+.LNE_menu_doubleintend {
+	margin-left: 20px;
+}
+
+.rss {
+	float: right;
+	margin: 0;
+	padding: 0 6px;
+	border: none;
+}
+
+.rss a, .rss a:hover {
+	text-decoration: none;
+}
+
+.rss img {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+
+/* Classes for the news module */
+#LNEnews {
+/*background: #9090ff; */
+	line-height: 1.1em;
+	margin: 0 5% 0 5%;
+	padding-top: 1em;
+	padding-bottom: .8em;
+}
+
+#LNEnews hr {
+	width: 80%;
+	margin: auto;
+}
+
+.LNEnews_title {
+	display: block;
+	font-size: 130%;
+	font-weight: bold;
+}
+
+.LNEnews_date {
+	font-size: 80%;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.LNEnews_text {
+	display: block;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.LNEnews_text p {
+	margin-bottom: .1em;
+	margin-top: 0;
+}
+
+.LNEnews_author {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.LNEnews_email {
+	font-size: .9em;
+}
+
+.LNEnews_comments {
+/*	width: 85%; */
+	margin: 12px auto 0 auto;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.LNEnews_comment {
+/*	width: 85%; */
+	margin: 6px auto 6px;
+	background: #f0f0f0;
+	color: #303030;
+	padding: 4px 10px 4px 10px;
+}
+
+.LNEnews_comment .time {
+	font-size: .8em;
+}
+
+.LNEnews_comment .text {
+	display: block;
+	margin-bottom: 6px;
+}
+
+.LNEnews_comment .email {
+	margin-left: 12px;
+	font-size: .8em;
+}
+
+.LNEnews_comment .author {
+	font-weight: bold;
+}
+
+#lightbox {
+	position: absolute;
+	top: 40px;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	text-align: center;
+	line-height: 0;
+}
+
+#lightbox a img{
+	border: none;
+}
+

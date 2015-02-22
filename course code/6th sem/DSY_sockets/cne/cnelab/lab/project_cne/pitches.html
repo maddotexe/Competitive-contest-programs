@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <title>
+    6.857: Computer and Network Security - Massachusetts Institute of
+    Technology - Spring 2010
+  </title>
+  <link rel="stylesheet" href="pitches_files/calendar.css" type="text/css"> 
+  <link rel="stylesheet" href="pitches_files/layout.css" type="text/css">
+  <link rel="stylesheet" href="pitches_files/sidebar.css" type="text/css">
+  <link rel="stylesheet" href="pitches_files/style.css" type="text/css">
+  <script src="pitches_files/jquery-1.js" type="text/javascript"></script>
+  <script src="pitches_files/calendar.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div id="contents">   
+    <div id="navigation">
+      <p>
+        <a href="http://csail.mit.edu/">
+          <img src="pitches_files/csail_logo_small.gif" alt="CSAIL Logo">      
+        </a>        
+      </p>
+      
+      <ol>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/index.html">Home</a></li>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/info.html">Course Info</a></li>
+        <li><a href="https://sec.csail.mit.edu/">Registration and Homework</a></li>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/calendar.html">Calendar</a></li>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/handouts.html">Lectures and Handouts</a></li>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/projects.html">Projects</a></li>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/resources.html">Resources</a></li>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/references.html">References</a></li>
+        <li><a href="http://courses.csail.mit.edu/6.857/2010/earlier.html">Previous Years</a></li>
+      </ol>
+    </div>
+
+    <div id="main">
+      <h1>6.857: Computer and Network Security</h1>
+      
+      <h2>Term Project Pitches</h2>
+            
+      <ul class="pitches">
+      	<li>
+					<span class="title">
+						Captive portals (for WiFi and wired networks)
+					</span>
+          <ul class="authors">
+            <li>Adam Belay <span class="athena">abelay</span></li>
+            <li>Ben Huan <span class="athena">benhuan</span></li>
+            <li>Joe Huan <span class="athena">joehuan</span></li>
+            <li>John Dong <span class="athena">jdong</span></li>
+          </ul>
+				</li>
+
+        <li>
+          <span class="title">
+            P2P networking capabilities for NaCl
+          </span>
+          <ul class="authors">
+            <li>Nizameddin Ordulu<span class="athena">nizam</span></li>
+          </ul>
+					Did some previous work in 6.893 on adding network access capabilities
+					to NaCl (Google's Native Client) applications. Previously looked at
+					server-client interactions, now wants to look at challenges unique to
+					building P2P networks out of the NaCl clients.
+        </li>
+
+        <li>
+          <span class="title">
+            Privacy and security in social networks
+          </span>
+          <ul class="authors">
+            <li>Christian Ternus<span class="athena">ternus</span></li>
+            <li>Geoffrey Thomas<span class="athena">geofft</span></li>
+            <li>Ian Ynda-Hummel<span class="athena">ianyh</span></li>
+            <li>Jacky Chang<span class="athena">kyoki</span></li>
+          </ul>
+					End goal: design a social network with good privacy guarantees without
+					crippling functionality too much. There is some similarity beween
+					social networks and DHTs, so looking at some results in that area.
+					A scheme for distributed PKI certificates that would allow mutual
+					authentication without leaking user interactions. Understanding what
+					information is leaked accidentaly from a social network, like
+					everyone's sexual orientation and people's location from picture (PNG)
+					geolocation information.
+        </li>
+				
+        <li>
+          <span class="title">
+            First pre-image attacks on crypto hashes via hash chains
+          </span>
+          <ul class="authors">
+            <li>Jason Trigg<span class="athena">jtrigg</span></li>
+          </ul>
+					Looking at existing work on using hash chains to invert crypto hashes.
+					Hash chains take the idea of rainbow tables to the next level, by
+					reducing the amount of storage required. Investigating breaking A5/1
+					(GSM encryption) using hash chains.
+        </li>
+
+        <li>
+          <span class="title">
+            Privacy on facebook
+          </span>
+          <ul class="authors">
+            <li>Jacinda Shelly<span class="athena">jknoll</span></li>
+          </ul>
+          What are you sharing on Facebook? Wants to build a Facebook
+					application that acts as an advisor. The app would look at your
+					profile information that is  available to 3rd-party apps and to
+					random users, and compare that to your desired privacy levels (that
+					you would indicate to the app). The output will be suggested changes
+					to your Facebook privacy settings.   
+        </li>
+
+        <li>
+          <span class="title">
+            Wireless network security
+          </span>
+          <ul class="authors">
+            <li>Peter Brin<span class="athena">pebrin</span></li>
+          </ul>
+					Wireshark (formerly known as ethereal) is awesome for sniffing wired
+					and wireless networks. Wants to use it to understand how much
+					information we leak right now, by connecting to shared wireless
+					networks. Also interested in cellphone wireless security (can talks be
+					intercepted by going near a cellphone? near a tower?) and Bluetooth
+					security.
+        </li>
+
+        <li>
+          <span class="title">
+            TOR vs a government
+          </span>
+          <ul class="authors">
+            <li>Michael Yu<span class="athena">mikeyu</span></li>
+          </ul>
+					Wants to understand the privacy offered by TOR to human rights
+					activists in China. Also interested in related TOR problems:
+					privacy issues stemming from the fact that DNS lookups aren't routed
+					through TOR, network abuse by BitTorrent users.
+        </li>
+
+        <li>
+          <span class="title">
+            Shared accounts in online services
+          </span>
+          <ul class="authors">
+            <li>David Wen<span class="athena">davidwen</span></li>
+          </ul>
+					Invesigating groups and group accounts (accessed by multiple users) in
+					online services. Problems: limiting damage when a user's credentials
+					are leaked, limit cases changing group membership (2 users: no way
+					to vote on membership changes; many users: voting would take too
+					long). 
+        </li>
+
+        <li>
+          <span class="title">
+            Honey-client (honeypot) for P2P networks
+          </span>
+          <ul class="authors">
+            <li>Jason Uh<span class="athena">juh</span></li>
+          </ul>
+					Wants to implement a honey-client. The main issues are making the
+					honeypot hard to detect (so that malicious peers don't simply avoid 
+					it) and understanding what kinds of data should the honeypot collect.
+        </li>
+
+        <li>
+          <span class="title">
+            Security risks of rooting / jail-breaking mobile devices
+          </span>
+          <ul class="authors">
+            <li>David Stein<span class="athena">stein</span></li>
+          </ul>
+					Many users like to root their smart-phones, with an emphasis on
+					Android and iPhone devices. Rooting exposes features that are locked
+					down by carriers, such as tethering and innovative applications.
+					However, rooting also carries security risks, as it compromises the
+					mobile operating system's application isolation mechanisms. This
+					project will focus on the Android OS, and will look at the application
+					isolation isses. A particularly interesting issue is the SD card,
+					which is used for shared storage by applications, and doesn't have
+					any isolation mechanisms in place (uses a FAT32 filesystem).
+        </li>
+
+        <li>
+          <span class="title">
+            Advanced CAPTCHAs
+          </span>
+          <ul class="authors">
+            <li>Michael Poon<span class="athena">mpoon</span></li>
+          </ul>
+					CAPTCHAs are used to distinguish between human users and computers,
+					hoping to reduce the abuse (like spam) on open systems. Currently,
+					CAPTCHAs rely on the hardness of the OCR problem. Sadly, automated
+					recognizers have made great strides in this area, which means that
+					CAPTCHAs are becoming increasingly difficult, and thus frustrating for
+					human users to solve. This project is looking at new methods for
+					CAPTCHAs, relying on the difficulty of object and feature recognition
+					in images (e.g. recognize a rotation of a 3-D object, or pictures of
+					a room from different angles). 
+        </li>
+
+        <li>
+          <span class="title">
+            Browser security
+          </span>
+          <ul class="authors">
+            <li>Chris Perciballi<span class="athena">cpercib</span></li>
+          </ul>
+          Interested in issues in the JavaScript security model. 
+        </li>
+
+        <li>
+          <span class="title">
+            E-commerce via mobile phones
+          </span>
+          <ul class="authors">
+            <li>Herman Mutiso<span class="athena">hmutiso</span></li>
+          </ul>
+          Interested in using mobile phones as debit / credit cards, especially
+					in countries without a good infrastructure for processing plastic
+					card payments. Problems: authenticating a user via phone to the
+					financial institution, then the financial institution to the retail
+					chain; encrypting information on mobile devices; protecting against
+					malicious retailers. 
+        </li>
+
+        <li>
+          <span class="title">
+            Steganographic file systems
+          </span>
+          <ul class="authors">
+            <li>Jeff Chen<span class="athena">jchen123</span></li>
+          </ul>
+					Steganography is <q>hiding information in plain sight</q>. This is the
+					only way to prevent against "firehose attacks" where the user is 
+					physically detained by the attacker (e.g., hostile government) and
+					forced to reveal secrets. StegFS is a file-system that offers
+					plausible deniability. Interested in mitigating the space-inefficiency
+					of StegFS, and measuring its performance against established UNIX
+					filesystems.
+        </li>
+
+        <li>
+          <span class="title">
+            Making the web of trust usable
+          </span>
+          <ul class="authors">
+            <li>Quentin Smith<span class="athena">quentin</span></li>
+          </ul>
+					PGP is a great PKI (public-key infrastructure) with a distributed
+					trust model. Unfortunately, current PGP software isn't very useful,
+					due to the difficulty of navigating the "web of trust" to find a
+					path to someone's key. This project aims to find a way to find
+					possible paths on-the-fly, as needed.
+        </li>
+
+        <li>
+          <span class="title">
+            Survey of crypto hashes
+          </span>					
+          <ul class="authors">
+            <li>Daniel Firestone<span class="athena">fstone</span></li>
+            <li>Syed Raza<span class="athena">raza</span></li>
+          </ul>
+					Proposing to conduct a survey on SHA-3 candidates. Interested in
+					learning about successful attacks on previous hash candidates (e.g.,
+					MD-5, SHA-1) and exploring their applicability to the new candidates
+					for SHA-3. Hoping to discover an interesting attack on one candidate.
+        </li>
+
+        <li>
+          <span class="title">
+            Security in medical imagery
+          </span>
+          <ul class="authors">
+            <li>Adian Dalca<span class="athena">adalca</span></li>
+            <li>Katherine Kuan<span class="athena">kkuan</span></li>
+          </ul>
+					Interested in exploring the privacy implications of the increased
+					sharing of medical imagery (which contains a lot of personal
+					information) via elecronic means. Looking at related security
+					constraints, like making sure that images come from a certain
+					hospital, via the use of watermarking. Expecting to apply the results
+					to the emerging problem of securing human genomes. Will take into
+					account the legal framework for this scenario (DIACOM, HIPAA). If
+					time permits, will look into PAX (picture archiving system) and try
+					to uncover any issues with its access control scheme.
+        </li>
+
+        <li>
+          <span class="title">
+            Searchable encryption
+          </span>
+          <ul class="authors">
+            <li>Najam Shahid<span class="athena">najam</span></li>
+          </ul>
+					Aiming to find a good trade-off between security and efficiency on the
+					searchable encryption problem. The problem is being able to search
+					an encrypted body of text for keywords, without learning too much
+					information about the text.
+        </li>
+
+        <li>
+          <span class="title">
+            Security in P2P networks
+          </span>
+          <ul class="authors">
+            <li>Chenxia Liu<span class="athena">cliu10</span></li>
+          </ul>
+					Interested in two aspects of P2P security: the search index and the
+					routing tables. The search index allows users to look up shared files
+					by name, and find out who is offering them. It can be attacked by
+					inserting bogus IPs / IDs for popular entries, in order to frustrate
+					P2P users who would spend a lot of time waiting for connection
+					time-outs. P2P systems create overlay networks with their own routing
+					tables. A malicious client can poison the routing tables of its
+					neigbors. Bogus routing entries can lead to DoS by congesting parts
+					of the network. Interested in developing some attacks, and proposing
+					fixes for them.
+        </li>
+
+        <li>
+          <span class="title">
+            Detecting trojans in compilers
+          </span>
+          <ul class="authors">
+            <li>Nicholas Zehender<span class="athena">zehender</span></li>
+          </ul>
+					A compromised compiler can insert trojans into the binary it outputs.
+					This is problematic, because the security issue cannot be detected
+					by looking at the source code of the binaries. The currently proposed
+					solution is distributed double-compiling, which requires a trusted
+					compiler whose output is deterministic and matches perfectly with the
+					output of the compiler under test. This project aims to relax these
+					restrictions, either by improving the current approach, or by
+					proposing an entirely new approach.
+        </li>
+
+        <li>
+          <span class="title">
+            Privacy of TOR
+          </span>
+          <ul class="authors">
+            <li>Artur Dmowski<span class="athena">arturd</span></li>
+          </ul>
+          Wants to understand the privacy offered by TOR (The Onion Router) in
+          the presence of an adversary with almost complete knowledge (e.g.,
+          the Chinese government).					
+        </li>
+
+        <li>
+          <span class="title">
+            Security for finger-print readers
+          </span>
+          <ul class="authors">
+            <li>Travis Grusecki<span class="athena">travisrg</span></li>
+          </ul>
+					Finger-print readers are an increasingly popular method of biometric
+					authentication. This project aims to explore the security of systems
+					that include finger-print readers. EAL certifications for these					
+					readers impose constraints on the reading process, but are silent on
+					methods and security for storing the finger-print (e.g., as an image
+					or as a wavelet). The certifications are also incomplete with respect
+					to how finger-print information should be processed. Last but not
+					least, in some cases, the finger-print information stored in the
+					reader might be more valuable than the rest of the data secured by the
+					reader.
+        </li>
+				
+        <li>
+          <span class="title">
+            Analysis of VoIP security
+          </span>
+          <ul class="authors">
+            <li>Heymian Nayak<span class="athena">arturd</span></li>
+            <li>Nina Guo<span class="athena">arturd</span></li>
+            <li>Rajeev Wong<span class="athena">arturd</span></li>
+          </ul>
+					A survey of the current state of security in VoIP (voice over IP).
+					Looking at the issue of integrating hardware, extra features such as
+					caller ID and voicemail, and maintaining good performance. The survey
+					will cover the currently used protocols: SRTP (relies on AES and
+					HMAC), ZRTP (session key negotiation using Diffie-Hellman), and Mikey
+					(proposed alternative to ZRTP offering more methods for key exchange,
+					and a more complex system for negotiating session keys and security
+					parameters). Will pay particular attention to how ZRTP and Mikey
+					prevent man-in-the-middle attacks.
+        </li>
+
+        <li>
+          <span class="title">
+            Prevent phishing by determining visually similar websites
+          </span>
+          <ul class="authors">
+            <li>Steven Arcangeli<span class="athena">stevearc</span></li>
+          </ul>
+          SSL is a great piece of infrastructure for securing the Web, but it
+					doesn't match regular users' cognitive model. This project aims to 
+					discover a method for determining whether two different websites look
+					very similar, and thus one of them should be suspected of being a
+					phishing attempt. 
+        </li>
+
+        <li>
+          <span class="title">
+            Direct mail phishing schemes
+          </span>
+          <ul class="authors">
+            <li>Cordelia Link<span class="athena">cslink</span></li>
+          </ul>
+					Direct mail has some advantages over e-mail for scammers: spamming is
+					not illegal, it is much harder to track, and it's more trusted. This
+					project will experiment with two scams via direct mail, to see their
+					response rate and assess people's vulnerability to phishing via direct
+					mail. The first experiment will try to trick recipients into visiting
+					a website to activate their ATM cards, and the second experiment will
+					trick people into paying for stock price predictions, by sending
+					exhaustive predictions to a lot of people, and then selecting the ones
+					who received correct predictions. Problem: figuring out a framework to
+					keep the experiments legal.
+        </li>
+
+        <li>
+          <span class="title">
+            Access control system for FOAF + SSL
+          </span>
+          <ul class="authors">
+            <li>Charles McKenzie<span class="athena">charles2</span></li>
+          </ul>
+					FOAF authenticates users using RDF stores that contain published
+					friendship relationships, and the FOAF (friend-of-a-friend)
+					relationship. It seems similar to PGP's web of trust. This project
+					will explore the security of a system using FOAF and SSL, working
+					towards the author's end goal of building a distributed social
+					network.
+        </li>
+
+        <li>
+          <span class="title">
+            IM security and privacy
+          </span>
+          <ul class="authors">
+            <li>Jed Kaniewski<span class="athena">jedkan</span></li>
+          </ul>
+					Exploring the security issues in using today's IM networks. Both the 
+					client binaries and protocols are closed, which exposes users to
+					potentially malicious clients (root kits, key loggers, etc) and
+					security threats (there is no guarantee that a screen name is
+					associated with the same person that it was associated with yesterday,
+					no guarantees for the security of the data transfer).
+        </li>
+
+        <li>
+          <span class="title">
+            P2P privacy
+          </span>
+          <ul class="authors">
+            <li>Adam Petcher<span class="athena">ad21316</span></li>
+          </ul>
+          Aims to design a P2P publishing system that gives privacy to the
+					publisher. This is essential for freedom of speech, etc. The main idea
+					is breaking up the information to be shared into multiple pieces
+					which must be xor'ed together according to a recipe. Users would
+					also be able to combine the pieces to obtain work in the public domain
+					(e.g., linux distributions), to offer plausible deniability. In the
+					end, this would reduce the problem of privately distributing large
+					chunks of data to privately distributing small recipes, which can be
+					solved by TOR.
+        </li>
+
+        <li>
+          <span class="title">
+            File servers for the generic end-user
+          </span>
+          <ul class="authors">
+            <li>Colin Hom<span class="athena">chom</span></li>
+          </ul>
+					Generic = computer-illiterate. Right now, setting up a file server
+					involves building a server environment, obtaining a static IP, and
+					setting up port forwarding on a home router. Will go around these
+					issues by introduing a third-party Web server that intermediates
+					transfers and potentially stores the file contents. Will achieve
+					security by designing a minimalistic protocol restricted to GET and
+					PUT operations, client-server operation, and limited to certain
+					directories on the user's drive.
+        </li>
+
+        <li>
+          <span class="title">
+            Security in Prophet
+          </span>
+          <ul class="authors">
+            <li>Christine Spang<span class="athena">spang</span></li>
+          </ul>
+					Prophet is a distributed database system. The current implementation
+					assumes that the parties involved in a sync operation fully trust
+					each other. This project aims to design a sync operation where the
+					parties only trust in each other partially. Security will be achieved
+					by limiting the scope of the sync operation, and using PGP for 
+					authentication, secure data transfer, and data signing.
+        </li>
+
+        <li>
+          <span class="title">
+            Anonymous file sharing
+          </span>
+          <ul class="authors">
+            <li>Nick Bushak<span class="athena">nbushak</span></li>
+          </ul>
+					Explore why anonymous file-sharing hasn't taken off, and propose a
+					fix. Will focus on college networks, which have high-bandwidth
+					low-latency connections between all the users. Will survey the many
+					projects out there, with a special interest on DC (Direct-Connect).
+        </li>
+      </ul>
+    </div>
+    <div id="footer">
+      <div class="mit_logo">
+        <a href="http://mit.edu/">
+          <img src="pitches_files/mit_logo.gif" alt="MIT Logo">
+        </a>
+      </div>
+      <p>
+        Copyright ©
+        <a href="http://web.mit.edu/">Massachusetts Institute of Technology</a>
+        2010.
+        Designed by <a href="http://www.costan.us/">Victor Costan</a>
+      </p>
+      <ul class="links">
+        <li>
+          <a href="mailto:6857@NOSPAM_REMOVEmit.edu">Staff Mailing List</a>
+        </li>
+        <li>
+          <a href="http://www.eecs.mit.edu/">MIT EECS</a>
+        </li>
+        <li>
+          <a href="http://web.mit.edu/registrar/calendar/index.html">MIT
+            Academic Calendar
+          </a>
+        </li>
+        <li>
+          <a href="http://people.csail.mit.edu/devadas">Srini Devadas</a>
+        </li>
+        <li>
+          <a href="http://people.csail.mit.edu/nickolai">Nickolai Zeldovich</a>
+        </li>
+        <li>
+          <a href="http://www.costan.us/">Victor Costan</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="pitches_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-2624215-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+
+</body></html>

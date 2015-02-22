@@ -1,0 +1,366 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1"></head><body background="nice_files/gold.htm">
+<font face="helvetica,arial,verdana,sans-serif" size="-1">
+<title>Internetworking</title>
+<!-- Changed by: Hans-Peter Dommel, 31-May-1996 -->
+<hr>
+<font size="+3"><b>ROUTING AND MULTICASTING SERVICES</b></font>	
+<hr>
+
+<p><b>The Routing and Multicasting Services for NICE and the NII
+project ("NICE" for short) was funded by <a href="http://www.ito.darpa.mil/">DARPA / ITO</a> at the University of
+California, Santa Cruz (<a href="http://www.ucsc.edu/">UCSC</a>).
+
+</b></p><p><b> This project was part of the <a href="http://www.darpa.mil/ito/research/nets/index.html">DARPA
+Networking Systems (NETS) program.</a>
+
+</b></p><p><b>At UCSC, this project was part of the research carried out within
+the Computer Communication Research Group (<a href="">CCRG</a>) of the <a href="http://www.cse.ucsc.edu/"> Baskin School
+of Engineering</a>.
+
+</b></p><p><b>The principal investigators of this project were <a href="http://www.cse.ucsc.edu/%7Ejj">J.J. Garcia-Luna-Aceves</a>
+and <a href="http://www.cse.ucsc.edu/cgi-bin/faculty?varma">Anujan
+Varma.</a>
+
+</b></p><p><b> </b> </p><hr> <hr>
+<p>
+
+</p><h2><em>Objective</em></h2>
+
+<p> The Internet is experiencing the widespread adoption of
+applications that support real-time reliable or unreliable
+distribution of multimedia information to multiple destinations (e.g.,
+<i>nv, vat, NeVot, wb</i> and <i> shdr</i>). In addition, with the
+continuing decrease in hardware costs, very simple or special-purpose
+devices will soon have computing and communications capabilities of
+their own and enjoy Internetwork addressability traditionally assigned
+to mainframes, workstations, and more recently personal computers. As
+a result, very simple devices will become reachedable through the
+Internet; furthermore, traditional computing, storage, and
+media-distribution resources will be implementable by aggregating such
+simpler devices (e.g., a traditional Internet host becomes a network
+of devices). We refer to this next architectural step in the evolution
+of the Internet as the <i>networked imbedded-computing environment</i>
+(NICE). NICE implies the interconnection to the national information
+infrastructure of vast numbers of internetwork-addressable devices and
+traditional networked resources.
+
+</p><p> The emergence of NICE and new Internet real-time multimedia
+applications presents many new challenges on multicasting and routing.
+UCSC is carrying out a three-year research project focusing on
+reliable multicasting, multicast routing, scalable routing, and
+congestion control.
+</p><p>
+
+
+</p><hr>
+
+<p>
+</p><h2><em>Approach</em></h2>
+
+<p> Our approach consisted of advancing the state of the art in the
+following areas:
+
+</p><ul> 
+
+<li><p> <i> End-to-End Reliable Multicast:</i> Protocols that support
+scalable and reliable many-to-many communication on an end-to-end
+basis and eliminate the limitations of existing sender-initiated and
+receiver-initiated multicast protocols.  The proposed protocols
+operate by the sources delegating retransmission responsibilities to
+the receivers, and by organizing the receivers of a session in a
+structure that reduces the number of acknowledgments flowing back to
+the sources.
+
+
+</p></li><li><p> <i>Many-Cast Routing Architecture (MARA):</i> We propose a
+novel scalable routing architecture and algorithms to support unicast,
+multicast, and `any-cast' routing. This architecture is based on the
+notion of GDAGs, which generalizes the notion of multicast trees used
+in all previous approaches to multicasting and can support security
+requirements in a scalable manner.  GDAGs can be viewed as multicast
+trees extended by added chords, so that a single GDAG services all the
+sources of a multicast group and reduces the dealy/length/cost of the
+paths from sources to receivers with respect to what a single
+multicast tree per group can provide.
+
+
+</p></li><li><p> <i>Reliable Multicast within The Network:</i> Protocols that
+support reliable multicast within the network for such network-control
+purposes as key distribution or reliable updates among routers or
+switches.  These protocols either establish a <i> group-oriented
+directed acyclic graph</i> (GDAG) or use diffusing computations to
+carry out reliable multicast `on the fly.' [This may be necessary, for
+example in distributed simulation networks with such mobile nodes as
+aircraft.]
+        
+</p></li><li><p> <i> Integrated Routing:</i> Routing algorithms in MARA 
+extend the techniques developed for link-vector algorithms and other
+types of algorithms to manage routing objects corresponding to links,
+nodes, distances to nodes, flows between nodes, or ATM virtual-path
+and virtual-channel layouts.
+</p></li></ul>
+
+<p>
+
+</p><hr>
+
+<p>
+</p><h2><em>Recent Accomplishments</em></h2>
+
+<p> There are several mechanisms defined to protect the communication
+across links between neighboring nodes.  However, today's Internet
+routing and multicasting protocols provide few mechanisms, if any, to
+protect the exchange of control information. This project has
+developed the only known method to secure both classes of information
+in distance-vector routing protocols in constant space, which means
+that the overhead of the security mechanism is only linear with
+respect to the number of destinations.  This method was applied to BGP
+and intra-domain routing protocols.
+
+</p><p> A new hierarchical routing algorithm was developed, which is
+called the Hierarchical Information Path-based Routing (HIPR)
+algorithm. HIPR is based on the incremental exchange of hierarchical
+routing trees, and can be viewed as the first distributed version of
+Dijkstra's SPF algorithm running over a hierarchical graph. It has
+been shown that HIPR is far more efficient than OSPF in terms of time
+to converge, control messages exchanged, and computational overhead.
+
+</p><p> Prior specifications of the Core Based Tree (CBT) protocol have
+been shown to produce undetected loops and fail to construct multicast
+routing trees. To address the limitations of CBT, the Ordered Core
+based Tree (OCBT) protocol has been proposed.  The Multicast Internet
+Protocol (MIP) was also developed, which is free of loops at every
+instant and incurs far less overhead than PIM. MIP's design is based
+on the use of diffusing computations to distribute state information
+among routers regarding group membership along an acyclic graph.
+
+</p><p> End-to-end reliable multicast protocols that organize the set of
+receivers into a tree have been shown to be far more scalable and
+support higher maximum throughput than any other type of reliable
+multicast protocol proposed to date, such as sender initiated,
+receiver initiated, or ring-based protocols.
+
+</p><p> The Lorax protocol has been developed, which is the first known
+protocol that constructs and maintains a single shared acknowledgment
+(ACK) tree for concurrent reliable multicasting. Lorax eliminates the
+need to maintain an ACK tree for each source of a reliable multicast
+group, and can be used in combination with any of several tree-based
+reliable multicast protocols proposed to date.  Lorax provides
+solutions to several open questions concerning the implementation of
+shared ACK trees. Preserving reliability during restructuring of the
+ACK tree is easily guaranteed using aggregated acknowledgments that
+propagate from each leaf towards the source.  Lorax constructs and
+maintains a shared ACK tree.  Overhead traffic is contained during
+initial ACK-tree construction by growing the ACK tree from a known
+root.  Impatient nodes are quieted down and allowed to join the ACK
+tree by means of expanded ring searches that are narrow in
+scope. Hierarchical labeling of each node makes implicit routing of
+acknowledgments simple and preserves loop-free routing of such
+acknowledgments over the ACK tree at all times.
+
+
+</p><p> Architectural improvements to IP-multicast have been developed to
+encourage communication and cooperation between IP and higher-layer
+protocols.  The first, called LMAS, is a generalization of
+internetwork multicasting. LMAS provides an extended set of semantics
+so that sources can restrict the delivery of packets to a subset of
+information. LMAS can be implemented using CBT or PIM. The second
+architecture, called Streams, allows higher-layer protocols place
+packets into application-defined logical streams, so that hosts may
+prune the routing of packets based on meaningful contexts. The third
+architecture, called RMA, introduces new routing services designed to
+support reliable multicast protocols.  The cooperation between RMA and
+reliable multicast protocols provides very scalable and efficient
+reliable communication among hosts, and allows SRM, Lorax, and other
+reliable protocols to cooperate across an internet by providing a
+common interface.
+
+</p><p> A new multicast routing architecture called Shared-Tree
+Hierarchical Inter-Domain Multicast (SHIM) has been developed, which
+allows the use of shared tree protocols such as PIM-SM or CBT as the
+inter-domain routing protocol in a hierarchy that can include any
+routing protocol at the lowest level.  The architecture consists of
+two protocols: one that encapsulates an entire routing domain to allow
+it to appear as a {\it virtual router} on a higher-level shared tree;
+and a second protocol that provides mechanisms for rendezvous point or
+core distribution and recursively applies the first protocol to
+produce trees of domains that contain trees of domains. SHIM differs
+from existing hierarchical multicast protocols in many ways. It is the
+first architecture to allow any multicast protocol at the lowest level
+while using a shared tree for higher-level routing. It provides a
+simple, efficient mechanism for RP or core location
+dissemination. SHIM aligns easily with existing unicast domains and it
+does not require explicit assignment of levels except at the highest
+level.  SHIM is suitable for any shared tree protocol, such as PIM-SM
+or CBT, that forms a tree by sending join messages to some central
+router. It can also provide additional robustness for the shared tree
+protocol through the ability to replace a single rendezvous point or
+core with several routers that operate together in a distributed
+fashion and can tolerate members failing.
+
+</p><p> The Scalable Routing Information Protocol (SCRIP) has been
+implemented based on the loop-free path finding algorithm developed
+earlier in this project. SCRIP was implemented in gated and imports
+and exports routes from RIP. SCRIP has been debugged and tested and is
+running in a network of five PC routers. SCRIP converges as fast or
+faster than OSPF after network changes and requires an order of
+magnitude less load on the routers.
+
+</p><p> </p><hr>
+
+
+<p>
+</p><h2><em>Technology Transition</em></h2>
+
+<p> The limitations of CBT were notified to members of the IETF. A new
+version of CBT has been released by Ballardi, which corrects most of
+the limitations identified by our analysis.
+
+</p><p> Collaboration with Bell Laboratories took place
+to implement some
+of the mechanisms introduced in Lorax as part of the Reliable
+Multicast Transport Protocol.
+
+</p><p></p><hr>
+
+<p>
+</p><h2><em>Publications</em></h2>
+
+<p> The following is the list of published papers describing our
+research results in this project. A more complete list of CCRG publications,
+including PDF format, can be found
+<a href="http://www.cse.ucsc.edu/research/ccrg/publications.html">here</a>.
+
+</p><h2><em>Routing:</em></h2>
+
+<ul>
+
+<p> </p><li> J.J. Garcia-Luna-Aceves and S. Murthy, ``Supporting
+End-to-End Quality of Service with a Connectionless Routing
+Architecture,'' accepted for publication in <i>Computer Communications
+Journal</i>, 1997.
+
+<p> </p></li><li> 
+B. Smith and J.J. Garcia-Luna-Aceves, ``Efficient Security Mechanisms
+for The Border Gateway Routing Protocol,'' accepted for publication in
+<i>Computer Communications Journal</i>, 1997.
+
+<p> </p></li><li> J. Behrens and J.J. Garcia-Luna-Aceves,
+<a href="http://ccrg.soe.ucsc.edu/publications/jochen.icdcs97.ps.gz"> "Fast Dissemination of Link States Using Bounded Sequence
+Numbers with no Periodic Updates or Age Fields,"</a>
+<i>Proc. ICDCS'97 International Conference on Distributed Computing
+Systems,</i> Baltimore, Maryland, May 27 - 30, 1997.<p></p>
+
+<p> </p></li><li> S. Murthy and J.J. Garcia-Luna-Aceves,<a href="http://ccrg.soe.ucsc.edu/publications/shree.infocom97.ps.gz">
+``Loop-Free Internet Routing Using Hierarchical Routing Trees,''</a>
+<i>Proc. IEEE INFOCOM 97</i>, Kobe, Japan, April 7--11, 1997.
+
+<p> </p></li><li> B. Smith, S. Murthy, and J.J. Garcia-Luna-Aceves,
+<a href="http://ccrg.soe.ucsc.edu/publications/brad.sndss97.ps.gz">
+``Securing Distance Vector Routing Protocols,''</a>
+<i>Proc. Internet Society Symposium on Network and Distributed System
+Security</i>, San Diego, California, February 1997.
+
+<p> </p></li><li>J.J. Garcia-Luna-Aceves and S. Murthy,
+<a href="http://ccrg.soe.ucsc.edu/publications/shree.ton.ps.gz">
+``A Path Finding Algorithm for Loop-Free Routing,''</a> <i>IEEE/ACM
+Trans. Networking</i>, February 1997.
+
+<p> </p></li><li>
+B. Smith and J.J. Garcia-Luna-Aceves,
+<a href="http://ccrg.soe.ucsc.edu/publications/brad.globalinternet96.ps.gz">
+``Securing the Border Gateway Routing Protocol,''</a>
+<i>Proc. Global Internet'96</i>, London, UK, 20-21 November 1996.
+
+<p> </p></li><li> S. Murthy and J.J. Garcia-Luna-Aceves,
+<a href="http://ccrg.soe.ucsc.edu/publications/shree.infocom96.ps.gz">
+``Congestion-Oriented Shortest Multipath Routing,''</a>
+<i>Proc. IEEE INFOCOM 1996,</i> San Francisco, March 1996.
+
+</li></ul>
+
+<h2><em>Multicasting:</em></h2>
+<ul> 
+
+<p> </p><li>
+B.N. Levine and J.J. Garcia-Luna-Aceves, 
+<a href="http://ccrg.soe.ucsc.edu/publications/brian.mmsj.ps.gz">
+``A Comparison of Reliable Multicast Protocols,''</a> to appear in <i> Multimedi
+a
+Systems </i> (ACM/Springer), 1998.
+
+<p> </p></li><li> B.N. Levine and J.J. Garcia-Luna-Aceves, 
+<a href="http://ccrg.soe.ucsc.edu/publications/brian.icnp97.ps.gz">
+``Improving Internet
+Multicast with Routing Labels,'' </a><i>Proc. IEEE ICNP '97</i>, Atlanta,
+Georgia, October 28--31, 1997.
+
+<p> </p></li><li> L. Gu and J.J. Garcia-Luna-Aceves, 
+<a href="http://ccrg.soe.ucsc.edu/publications/lifan.ic3n97.ps.gz">
+``New Error Recovery
+Structures for Reliable Multicasting,'' </a><i>Proc. IC3N '97: Sixth
+International Conference on Computer Communications and Networks</i>,
+Las Vegas, Nevada, September 22--25, 1997.
+
+
+<p> </p></li><li> 
+J.J. Garcia-Luna-Aceves and B.N. Levine, ``End-to-End Reliable
+Multicast,'' in <i> Multimedia Communications: Protocols and
+Applications</i>, Chapter 6, Prentice-Hall, 1997.
+
+<p> </p></li><li> C. Shields and J.J. Garcia-Luna-Aceves, 
+<a href="http://ccrg.soe.ucsc.edu/publications/infocomm97ocbt.ps.gz">
+``The Ordered Core Based Tree Protocol,''</a> <i>Proc. IEEE INFOCOM 97</i>, 
+Kobe, Japan, April 7--11, 1997.
+
+<p> </p></li><li> M. Parsa and J.J. Garcia-Luna-Aceves,
+<a href="http://ccrg.soe.ucsc.edu/publications/PG.jsac97.ps.gz">
+``A Protocol for Scalable Loop-Free Multicast Routing,''</a>
+<i> IEEE Journal on Selected Areas in Communications </i>, April 1997,
+vol. 15, no. 3, pp. 316-331.
+
+<p> </p></li><li> M. Parsa and J.J. Garcia-Luna-Aceves,
+<a href="http://ccrg.soe.ucsc.edu/publications/PG.mmcn97.ps.gz">
+``A Scalable and Loop-Free Multicast Internet Protocol,''</a> <i>Proc. SPIE
+Multimedia Computing and Networking 1997</i>, San Jose, California,
+February 1997.
+
+<p> </p></li><li> B.N. Levine, D. Lavo, and J.J. Garcia-Luna-Aceves,
+<a href="http://ccrg.soe.ucsc.edu/publications/brian.mm96.ps.gz">
+``The Case for Concurrent Reliable Multicasting Using Shared Ack
+Trees,''</a> <i>Proc. ACM Multimedia 1996</i> Boston, MA,
+November 18--22, 1996.
+ 
+<p> </p></li><li> B.N. Levine and J.J. Garcia-Luna-Aceves, 
+<a href="http://ccrg.soe.ucsc.edu/publications/brian.icnp.ps.gz">
+``A Comparison of Known Classes of Reliable Multicast Protocols,''</a>
+<i>Proc. International Conference on Network Protocols (ICNP-96)</i>,
+Columbus, Ohio, Oct 29--Nov 1, 1996. 
+
+</li></ul>
+<p></p><hr>
+<center><b>
+<a href="http://ccrg.soe.ucsc.edu/charter.html">Charter</a> |
+<a href="http://ccrg.soe.ucsc.edu/faculty.html">Faculty</a> |
+<a href="http://ccrg.soe.ucsc.edu/students.html">Students</a> |
+<a href="http://ccrg.soe.ucsc.edu/alumni.html">Alumni</a> |
+<a href="http://ccrg.soe.ucsc.edu/facilities.html">Facilities</a> |
+<a href="http://ccrg.soe.ucsc.edu/directions.html">Directions</a> <br>
+<hr>
+<a href="http://ccrg.soe.ucsc.edu/research.html">Research Areas</a> |
+<a href="http://ccrg.soe.ucsc.edu/projects.html">Projects</a> |
+<a href="http://ccrg.soe.ucsc.edu/publications.html">Publications</a> |
+<a href="http://ccrg.soe.ucsc.edu/links.html">Link Library</a>
+<hr>
+<a href="http://ccrg.soe.ucsc.edu/siteindex.html">Site Index</a> |
+<a href="http://ccrg.soe.ucsc.edu/home.html">CCRG</a> |
+<a href="http://www.cse.ucsc.edu/">SoE</a> |
+<a href="http://www.ucsc.edu/">UCSC</a> |
+<a href="http://www.ucop.edu/ucophome/ucservers.html">UC</a>
+</b>
+</center>
+<hr>
+
+
+</font></body></html>

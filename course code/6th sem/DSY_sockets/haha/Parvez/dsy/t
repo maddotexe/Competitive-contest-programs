@@ -1,0 +1,4 @@
+
+		  if(len<=0)break;
+		  buff[len]='\0';
+		  cout<<buff<<endl;

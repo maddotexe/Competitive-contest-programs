@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+  <meta name="ProgId" content="FrontPage.Editor.Document">
+  <title>CS614: Advanced Course in Computer Systems</title>
+</head>
+<body>
+<h2 align="center">TCP PEP (Performance Enhancing Proxy) Correctness
+Project<br>
+</h2>
+<br>
+There is plenty of evidence (and commercial products) showing that TCP
+PEPs improve E2E performance.&nbsp; Some forms of PEP (Performance
+Enhancing Proxy), however, do so
+only by breaking the E2E TCP semantics.&nbsp; Specifically, the PEP may
+acknowledge packets that it has received, but that have not yet been
+acknowledged by the true end host.&nbsp; As a result, PEPs are
+considered a bad idea by both the research and standards communities in
+spite of their performance advantages.<br>
+<br>
+I suspect that PEPs have to an extent unfairly gotten a bad rap.&nbsp;
+The reason is that TCP correctness is typically decoupled from
+application correctness---indeed, the application cannot even tell,
+through the socket interface, which bytes have been acknowledged by the
+other end and which have not.&nbsp; If the application provides its own
+acknowledgment, then a bogus acknowledgment from TCP will not
+compromise the correctness of the application (i.e. the sender won't be
+mistaken about what the receiver has gotten).<br>
+<br>
+I would like to better understand what exactly the consequences of
+breaking TCP reliability semantics are from the application's point of
+view.&nbsp; To do this, I'd like each student to examine one
+application carefully (including looking at its software) and determine
+analytically if its correctness would be broken by a broken TCP.&nbsp;
+In doing this, the student should assume that the PEP has the following
+properties:<br>
+<br>
+1.&nbsp; The PEP can detect when E2E byte acknowledgment semantics have
+been broken (i.e. it acknowledges to the sender a byte that the
+receiver will never receive), and it resets the connection when this
+happens.<br>
+2a.&nbsp; The PEP never makes transmission errors.<br>
+2b.&nbsp; The PEP may make a transmission error (i.e. by itself
+corrupting bytes while it buffers the stream, but providing the
+receiver a checksum that computes correctly on the corrupted bytes).<br>
+<br>
+Please mail to the class mailing list (cs619-l) which application you
+would like to analyze, and which public domain software package you
+will use.&nbsp; Only pick an application that has not yet been claimed
+by another student.<br>
+<br>
+The deliverable for this project will be a short description of whether
+the application will break (where breaking here means that the sending
+application thinks that the receiver has received something that it
+hasn't), if so how, and if not, why not.<br>
+<p class="MsoNormal"><span style="font-size: 12pt;"><br>
+<o:p></o:p></span></p>
+
+
+</body></html>

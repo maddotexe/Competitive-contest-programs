@@ -1,0 +1,652 @@
+<!DOCTYPE html PUBLIC "-//SQ//DTD HTML 2.0 + all extensions//EN" "hmpro3.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <title>CSC 7290, Department of Computer Science, Wayne State
+University</title>
+</head>
+<body>
+<h1>CSC7290: Advanced Computer Networking
+<small>(Winter 2009)</small></h1>
+<span style="font-weight: bold;">
+<br>
+QUICK LINKS</span>:&nbsp; <a href="#Lectures">Lectures</a>&nbsp;
+|&nbsp; <a href="#homeworks">Exercises</a>&nbsp; | &nbsp;<a href="#project">Projects</a>&nbsp; |&nbsp;
+|&nbsp; <a href="#related-materials">Related
+resources</a>&nbsp; <span style="color: rgb(255, 0, 0);"></span><span style="color: rgb(255, 0, 0);"></span><span style="color: rgb(255, 0, 0);"></span><br>
+<div style="margin-left: 160px;"><span style="color: rgb(255, 0, 0);">Course
+mailing list:</span>&nbsp; <a href="http://lists.wayne.edu/cgi-bin/wa?A0=csc7290">general</a>, <a href="http://lists.wayne.edu/cgi-bin/wa?A0=csc7290-web">web section
+only</a> <br>
+</div>
+<div style="margin-left: 40px;"><span style="color: rgb(255, 0, 0);"></span></div>
+<span style="color: rgb(255, 0, 0);"><br>
+<br>
+</span>
+<hr style="width: 100%; height: 2px;">
+<table style="text-align: left; width: 991px; height: 180px;" border="0" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><span style="font-weight: bold;">Instructor</span>:
+      <a href="http://www.cs.wayne.edu/%7Ehzhang/">Dr. Hongwei Zhang</a>
+      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+hzhang AT cs.wayne.edu<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++1 313 577 0731<br>
+      <span style="font-weight: bold;">Class timings</span>: MW
+3:00pm-4:20pm <br>
+      <span style="font-weight: bold;">Class webpage</span>:
+http://www.cs.wayne.edu/~hzhang/courses/7290/7290.html<br>
+      <span style="font-weight: bold;">Office hours</span>: MW
+4:30pm-5:30pm in <span style="font-style: italic;">454
+State Hall</span>, or by appointment<br>
+      </td>
+      <td style="vertical-align: top;"><span style="font-weight: bold;"></span><span style="font-weight: bold;">Teaching
+Assistant</span>: TBA<br>
+      <span style="font-weight: bold;">TA Office hours</span>: <br>
+      <div style="margin-left: 40px;">TBA</div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: center;">
+<center></center>
+</div>
+<hr>
+<h3>Overview <small>(<a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/7290-flyer.pdf">flyer</a>)</small><br>
+</h3>
+<div style="margin-left: 40px;">This course is designed for students
+who are interested in the principles and techniques of network protocol
+and system design. Topics span three broad areas: 1) <span style="font-style: italic;">Performance evaluation of networked systems</span>:
+techniques and metrics, experiment design, data analysis, and
+statistical modeling; 2) <span style="font-style: italic;">Modeling,
+analysis, and design of network protocols</span>: formal specification
+and analysis of network protocol properties, design of scalable and
+fault-tolerant network protocols; 3) <span style="font-style: italic;">Stochastic
+analysis of networked systems</span>: stochastic process, queuing
+theory, and their applications to network modeling and analysis. <br>
+<br>
+In short, the objective of this course is to help students understand
+the foundational principles and techniques of network design and
+analysis, to help students appreciate why networks have been designed
+as they are today, and to build up students' capability in
+enhancing the state of the art in computer networking. <br>
+</div>
+<br>
+<h3>Prerequisites</h3>
+<div style="margin-left: 40px;">Basic knowledge of computer networks
+(e.g., materials covered in CSC6290 or equivalent), elementary
+probability theory, statistics, and mathematical logic. Or consent of
+instructor. <br>
+<br>
+</div>
+<h3>References (Tentative, may change before semester starts)</h3>
+<ul>
+  <li><span style="font-weight: bold;">Required (tentative):</span></li>
+  <ul>
+    <li><span style="font-weight: bold;">[R0] </span>Raj
+Jain<span style="font-weight: bold;">,</span> <span style="font-style: italic;">The Art of Computer Systems Performance
+Analysis: Techniques for Experimental Design, Measurement, Simulation,
+and Modeling</span>, John Wiley &amp; Sons, Inc., 1991<span style="font-weight: bold;">. </span>(ISBN: 0471503363)</li>
+    <li><span style="font-weight: bold;">[R0']</span> Michal Pioro,
+Deepankar Medhi, <span style="font-style: italic;">Routing, Flow, and
+Capacity Design in Communication and Computer Networks</span>, Morgan
+Kaufmann, 2004&nbsp; <br>
+    </li>
+  </ul>
+  <li><span style="font-weight: bold;">Strongly recommended: <br>
+    </span></li>
+  <ul>
+    <li><span style="font-weight: bold;">[R1]</span> Dimitri Bertsekas
+and
+Robert Gallager, <span style="font-style: italic;">Data Networks</span>
+(2nd edition),
+Prentice Hall, 1992. (ISBN: 0132009161)&nbsp; (From <span style="color: rgb(255, 0, 0);">1st edition</span>: <a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/DataNetworks-chapters/Queueing.pdf">Queueing chapter</a>, <a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/DataNetworks-chapters/Routing.pdf">Routing chapter</a>; courtesy
+of Prentice Hall.) <br>
+    </li>
+  </ul>
+  <li><span style="font-weight: bold;">Recommended:</span></li>
+  <ul>
+    <li><span style="font-weight: bold;">[R2]</span> Mohamed G. Gouda, <span style="font-style: italic;">Elements of
+Network Protocol Design</span> (1st edition), John Wiley &amp; Sons.
+(ISBN: 0471197440)&nbsp;</li>
+    <li><span lang="EN-US"><span style="font-weight: bold;">[R3]</span>
+      </span>Sheldon
+M. Ross, <span style="font-style: italic;">Introduction
+to Probability Models</span>, 9th edition, Academic Press, 2006.&nbsp;
+(ISBN: 9780125980623) <br>
+    </li>
+    <li><span style="font-weight: bold;">[R4]</span> Robert G.
+Gallager, <span style="font-style: italic;">Discrete Stochastic
+Processes</span>,
+Kluwer Academic Publishers, 1996. (ISBN: 0792395832) <br>
+    </li>
+    <span style="font-weight: bold;"></span><li><span style="font-weight: bold;">[R5]</span> Thomas
+G.
+Robertazzi, <span style="font-style: italic;">Computer Networks and
+Systems:
+Queueing Theory and Performance Evaluation</span> (3rd edition),
+Springer. (ISBN: 0387950370)&nbsp;</li>
+    <li><span style="font-weight: bold;">[R6]</span> Anurag Kumar, D.
+Manjunath, Joy Kuri, <span style="font-style: italic;">Communication
+Networking: An Analytical Approach</span>, Morgan Kaufmann, 2004.
+(ISBN: 0124287514)<br>
+    </li>
+    <li><span style="font-weight: bold;">[R7]</span> Ravindra K. Ahuja,
+Thomas L. Magnanti, James B. Orlin<span style="font-family: &quot;times new roman&quot;;">, <span style="font-style: italic;">Net</span></span><span style="font-style: italic;">work Flows: Theory, Algorithms, and
+Applications</span>, Prentice
+Hall, 1993.&nbsp; </li>
+  </ul>
+</ul>
+<br>
+<dl style="margin-left: 40px;">
+</dl>
+<dl style="margin-left: 40px;">
+</dl>
+<dl style="margin-left: 40px;">
+</dl>
+<dl style="margin-left: 40px;">
+</dl>
+<h3>Flowchart of topics</h3>
+<ul>
+  <li><span style="font-style: italic;">Prelude</span>: how to have a
+bad career in research;
+general principles on systems research; review of basic probability
+theory and statistics<br>
+  </li>
+  <li><span style="font-style: italic;">Performance evaluation
+techniques and their applications to computer networks</span></li>
+  <ul>
+    <li>Common mistakes and how to avoid them</li>
+    <li>Selection of techniques and metrics</li>
+    <li>Experiment design and analysis<br>
+    </li>
+    <li>Summarizing measured data</li>
+    <li>Comparing systems using sample data</li>
+    <li>Mathematical regression models </li>
+  </ul>
+  <li style="font-style: italic;">Formal models of distributed
+algorithms and their application to network protocol analysis</li>
+  <ul>
+    <li>Network process: syntax and semantics</li>
+    <li>Models and analysis of network processes: specification and
+proof techniques</li>
+    <li>Applications to network protocol design and analysis<br>
+    </li>
+  </ul>
+  <li style="font-style: italic;">Stochastic models of computer
+networks and their applications</li>
+  <ul>
+    <li>Stochastic processes and queuing theory</li>
+    <li>Applications to protocol and system analysis</li>
+    <ul>
+    </ul>
+  </ul>
+</ul>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h3><b><a name="Lectures"></a>Lectures</b></h3>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/0-0%20-%20Course%20plan.pdf">Part 0(a):
+Introduction</a></li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+&nbsp; <br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/0-1%20-%20Prelude.pdf">Part 0(b): Computer
+Networking: Art and Science</a></li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>
+&nbsp; <br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/1%20-%20CommonMistakesAndHowToAvoidThem.pdf">Part
+1</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/1%20-%20CommonMistakesAndHowToAvoidThem.pdf">(a)</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/1%20-%20CommonMistakesAndHowToAvoidThem.pdf">:
+[Performance Evaluation]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/1%20-%20CommonMistakesAndHowToAvoidThem.pdf"> Common
+Mistakes and How to Avoid Them</a>&nbsp;
+(Chapter 2 of R0)&nbsp;&nbsp;</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+&nbsp; </div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/2%20-%20Selection%20of%20Techniques%20and%20Metrics.pdf">Part
+1</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/1%20-%20CommonMistakesAndHowToAvoidThem.pdf">(b)</a>:<a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/2%20-%20Selection%20of%20Techniques%20and%20Metrics.pdf">
+[Performance Evaluation]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/2%20-%20Selection%20of%20Techniques%20and%20Metrics.pdf">
+Selection of Techniques and Metrics</a>&nbsp;
+(Chapter 3 of R0)&nbsp;</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>
+&nbsp; <br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/3-pre%20-%20ProbabilityReview.pdf">Part 2(a):
+Review of Proability Theory</a>&nbsp; (Chapter 1 of R4)<span style="color: rgb(204, 0, 0);"></span></li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+&nbsp;&nbsp; <br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/3%20-%20Workload%20Characterization%20Techniques.pdf">Part
+2(b):</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/2%20-%20Selection%20of%20Techniques%20and%20Metrics.pdf">
+    </a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/3%20-%20Workload%20Characterization%20Techniques.pdf">Workload
+Characterization Techniques</a>&nbsp;
+(Chapter 6 of R0)&nbsp;</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+&nbsp; <br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/4%20-%20Introduction%20to%20Experimental%20Design.pdf">Part
+3(a): [Experiment design &amp; analysis] Introduction to Experimental
+Design</a>&nbsp;
+(Chapter 16 of R0)</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+<br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/9%20-%202%5Ek%20Factorial%20Designs.pdf">Part
+3(b): </a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/8%20-%20Introduction%20to%20Experimental%20Design.pdf">[Experiment
+design &amp; analysis]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/5%20-%202%5Ek%20Factorial%20Designs.pdf"> 2<sup>k</sup>
+Factorial Designs</a>&nbsp;
+(Chapter
+17 of R0)</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>
+<a href="http://coursecast02.cs.wayne.edu:8080/ess/echo/presentation/1d5813e5-07de-4ec4-a93a-112ddfed6b26">0</a>&nbsp;&nbsp;
+<br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/10%20-%20One-factor%20experiments.pdf">Part
+3(c): </a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/8%20-%20Introduction%20to%20Experimental%20Design.pdf">[Experiment
+design &amp; analysis] </a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/6%20-%20One-factor%20experiments.pdf">One-factor
+Experiments</a>&nbsp; (Chapter
+20 of R0) <br>
+  </li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>
+<br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/11%20-%20General%20full%20factorial%20designs%20with%20k%20factors.pdf">Part
+3(d): </a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/8%20-%20Introduction%20to%20Experimental%20Design.pdf">[Experiment
+design &amp; analysis] </a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/7%20-%20General%20full%20factorial%20designs%20with%20k%20factors.pdf">
+General Full Factorial Design with k
+Factors</a>&nbsp; (Chapter 23 of R0) <br>
+  </li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>
+<br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/8%20-%20Introduction%20to%20Simulation.pdf">Part
+4: Introduction to Simulation</a>&nbsp;
+(Chapter 24 of R0) <br>
+  </li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+<a href="http://coursecast02.cs.wayne.edu:8080/ess/echo/presentation/81e10aa7-7b47-4611-98ff-2885def90794"></a><br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/9%20-%20Summarizing%20Measured%20Data.pdf">Part
+5(a): [Data analysis] Summarizing Measured Data</a>&nbsp;
+(Chapter 12 of R0) <br>
+  </li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+<a href="http://coursecast02.cs.wayne.edu:8080/ess/echo/presentation/81e10aa7-7b47-4611-98ff-2885def90794"></a><br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/5%20-%20Comparing%20Systems%20Using%20Sample%20Data.pdf">Part
+5(b): </a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/4%20-%20Summarizing%20Measured%20Data.pdf">[Data
+analysis]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/10%20-%20Comparing%20Systems%20Using%20Sample%20Data.pdf">
+Comparing Systems Using Sample Data</a>&nbsp;
+(Chapter 13 of R0) <br>
+  </li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting:</span>&nbsp;
+<br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/6%20-%20Simple%20Linear%20Regression%20Models.pdf">Part
+5(c)</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/4%20-%20Summarizing%20Measured%20Data.pdf">:
+[Data analysis]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/11%20-%20Simple%20Linear%20Regression%20Models.pdf">
+Simple Linear Regression Models</a>&nbsp;
+(Chapter 14 of R0)</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting</span>:
+<br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/7%20-%20Other%20Regression%20Models.pdf">Part
+5(d)</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/4%20-%20Summarizing%20Measured%20Data.pdf">:
+[Data analysis]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/12%20-%20Other%20Regression%20Models.pdf"> Other
+(non-SL) Regression Models</a>&nbsp;
+(Chapter 15 of R0)</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting</span>:&nbsp;
+<a href="http://coursecast02.cs.wayne.edu:8080/ess/echo/presentation/d59024b2-a4e9-4113-ab3f-bf6ad43b2b92"></a><br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/13%20-%20Introduction%20to%20Queuing%20Analysis.pdf">Part
+6(a): [Queueing analysis] Introduction to Queuing Analysis</a>&nbsp;
+(Sections 3.2 and 3.3.1 of R1) <br>
+  </li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting</span>:&nbsp;
+<br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/14%20-%20Review%20of%20Markov%20Chain%20Theory.pdf">Part
+6(b)</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/13%20-%20Introduction%20to%20Queuing%20Analysis.pdf">:
+[Queueing analysis]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/14%20-%20Review%20of%20Markov%20Chain%20Theory.pdf">
+Review of Markov Chain Theory</a>&nbsp;
+(Appendix A to Chapter 3 of R1) <br>
+  </li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting</span>:&nbsp;
+<a href="http://coursecast02.cs.wayne.edu:8080/ess/echo/presentation/8f415bcc-2f75-4345-8dee-89a3652ffda4"></a><br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/15%20-%20M-M-Star%20Queues.pdf">Part 6(c)</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/13%20-%20Introduction%20to%20Queuing%20Analysis.pdf">:
+[Queueing analysis]</a><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/15%20-%20M-M-Star%20Queues.pdf">
+M/M/* Queues</a>&nbsp; (Sections 3.3 and 3.4 of R1)</li>
+</ul>
+<div style="margin-left: 80px;"><span style="color: rgb(204, 0, 0);">Webcasting</span>:&nbsp;
+<a href="http://coursecast02.cs.wayne.edu:8080/ess/echo/presentation/e7c22c27-aa4e-40a9-9d8a-bbc16c3edce0"></a><br>
+</div>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Lectures/16%20-%20Time%20Reversibility%20and%20Burke%27s%20Theorem.pdf">Time
+Reversibility and Burke's Theorem</a>&nbsp;&nbsp;&nbsp;</li>
+  <li>Open Jackson Networks</li>
+  <li>Closed Jackson Networks</li>
+  <li>M/G/1 Systems<br>
+  </li>
+</ul>
+<br>
+<ul>
+</ul>
+<h3><a name="homeworks"></a>Exercises <br>
+</h3>
+<div style="margin-left: 40px;">TBA <br>
+</div>
+<div style="margin-left: 40px;"><br>
+<br>
+<span style="font-weight: bold;"></span></div>
+<h3><a name="project"></a>Projects</h3>
+<div style="margin-left: 40px;"><span style="text-decoration: underline; font-style: italic;">Project options</span><br>
+</div>
+<div style="margin-left: 80px;">Evaluate the performance and/or analyze
+the properties of selected protocols/systems in the following
+fields:<br>
+<ul>
+  <li>Vehicular sensor networks</li>
+  <ul>
+    <li>intra-vehicle sensing and control</li>
+    <li>inter-vehicle sensing and control</li>
+    <li>urban/participatory/opportunistic sensing via vehicles <br>
+    </li>
+  </ul>
+</ul>
+<ul>
+  <li>Sensor networks in <br>
+  </li>
+  <ul>
+    <li>Healthcare: http://www.agingtech.org/browse.aspx?CA=1</li>
+    <li>Engineering: structural health monitoring, factory automation
+&amp; industrial control, etc.</li>
+    <li>Scientific study: environmental engineering, social sciences,
+etc.</li>
+    <li>Homeland security and military, or</li>
+    <li>Daily life: urban sensing
+(http://research.cens.ucla.edu/portal/page?_pageid=56,948798&amp;_dad=portal&amp;_schema=PORTAL),
+security monitoring, etc.</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>Can focus on issues such as <span style="font-style: italic;">MAC,
+routing, transport control, data storage and querying, and localization.</span></li>
+  </ul>
+</ul>
+<ul>
+  <li>Mobile networks in</li>
+  <ul>
+    <li>traffic control: real-time road traffic condition detection and
+control, etc.</li>
+    <li>auto safety: DSRC, etc.</li>
+    <li>homeland security, or</li>
+    <li>social networks</li>
+  </ul>
+</ul>
+<ul>
+  <li>Heterogeneous networks</li>
+  <ul>
+    <li>integrated wireless networks (sensor networks, WiFi, cellular)
+and the Internet etc.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Networking technologies for emerging economies</li>
+  <ul>
+    <li>network properties: wireless, mobility, intermittent
+connectivity ...<br>
+    </li>
+    <li>network services: telemedicine, mobile banking, e-retailing,
+stored data and voice messaging, remote education, local content and
+news, security, policing, etc.</li>
+  </ul>
+</ul>
+<ul>
+  <li>Other topics of your choice (with conscent of instructor)</li>
+</ul>
+</div>
+<div style="margin-left: 40px;">
+<ul>
+  <ul>
+  </ul>
+</ul>
+<ul>
+  <ul>
+  </ul>
+</ul>
+<span style="font-style: italic;"><span style="text-decoration: underline;">Rules</span></span><span style="text-decoration: underline;">:</span><span style="font-style: italic;"> </span><br>
+</div>
+<div style="margin-left: 40px;">
+<ul>
+  <li>Each student is expected to select his project and discuss with
+the instructor to finalize the scope of the project. <br>
+  </li>
+  <li>Students are allowed to form
+groups in doing projects, but the number of students per group should
+be no more than 3. <br>
+  </li>
+</ul>
+<span style="font-style: italic; text-decoration: underline;">Deliverables</span>:
+<br>
+<ul>
+  <li>In-class presentation. 1) The slides for your presentation should
+be
+sent via email to the class at least one day before your presentation,
+so that everyone can go over your slides before coming to class. 2)
+Your presentation should include overview of related work, the problem
+definition, methodology, and analysis.</li>
+  <li>Written project
+report.&nbsp; A sample of network performance evaluation article/report
+is <a href="http://www.cs.wayne.edu/%7Ehzhang/group/TR/DNC-TR-08-05.pdf">here</a>.
+    <br>
+  </li>
+</ul>
+</div>
+<div style="margin-left: 40px;">
+<ul>
+</ul>
+<span style="font-style: italic; text-decoration: underline;">Timeline</span>:
+<br>
+<ul>
+  <li>Select the topic and form your project group by 01/31/2010.&nbsp;</li>
+  <li>Submit your detail project plan and timeline by 02/28/2010.<br>
+  </li>
+  <li>Present your project in class according to <a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Project%20selection.xls">this schedule</a>. <br>
+  </li>
+  <li>Submit your
+project report electronically by midnight 05/01/2010.<br>
+  </li>
+</ul>
+<span style="font-style: italic; text-decoration: underline;">Evaluation
+criteria</span>: <br>
+</div>
+<div style="margin-left: 80px;">Your performance in project will be
+evaluated based on the following metrics:<br>
+</div>
+<div style="margin-left: 40px;">
+<ul>
+  <ul>
+    <li>Bredth and
+depth of your project, as evidenced by your
+project report and presentation. <br>
+    </li>
+    <li>Presentation quality (e.g., clarity, readability, and
+conciseness) of your project report and in-class talk.&nbsp;</li>
+    <li>Whether or not you are able to stick to the project timeline. <br>
+    </li>
+  </ul>
+</ul>
+<span style="font-style: italic; text-decoration: underline;">Miscl.</span>:<br>
+</div>
+<ul>
+  <ul>
+    <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Project%20selection.xls">Current
+assignment/selection of projects in class</a></li>
+    <li><a href="http://www.cs.wayne.edu/%7Ehzhang/courses/7290/Student%20project%20evaluation%20form.ppt">Project
+peer evaluation form</a> <br>
+    </li>
+  </ul>
+</ul>
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px;"> </div>
+</div>
+<div style="margin-left: 40px;"><br>
+</div>
+<div style="margin-left: 40px;"><br>
+<br>
+</div>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="related-materials"></a>Related resources</h3>
+<ul>
+  <li> TinyOS</li>
+  <ul>
+    <li>TinyOS Community Forum,&nbsp;<a href="http://www.tinyos.net/">http://www.tinyos.net/</a><big>&nbsp;
+      <br>
+      </big></li>
+    <li>Phil Levis's book on <a href="http://csl.stanford.edu/%7Epal/pubs/tinyos-programming.pdf">TinyOS
+Programming</a> <br>
+    </li>
+    <li><a href="http://www.tinyos.net/tinyos-2.x/doc/">TinyOS
+documentation</a>&nbsp;&nbsp;</li>
+    <li>Resources on <a href="http://www.tinyos.net/scoop/special/support">Using TinyOS and
+motes</a></li>
+  </ul>
+</ul>
+<big><span style="font-size: 10.5pt; font-weight: normal;" lang="EN-US"></span></big>
+<ul>
+  <li>Network simulators: <br>
+  </li>
+  <ul>
+    <li>TOSSIM</li>
+    <li>ns-2</li>
+    <li>qualnet/glomosim</li>
+    <li>opnet</li>
+  </ul>
+</ul>
+<ul>
+  <li><a href="http://www.cs.wayne.edu/%7Ehzhang/group/miscl/References-JournalsConferences.html">Links
+to journal &amp; conferences related to computer networking</a>, by
+Hongwei Zhang</li>
+</ul>
+<ul>
+  <li><a href="http://www.cse.cuhk.edu.hk/%7Ecslui/csc5420.html">Computer
+System Performance Evaluation</a>, by Dr. John S. C. Lui. </li>
+  <li><a href="http://www.cs.memphis.edu/%7Esantosh/Teaching/NetworkDesignAndPerformanceAnalysis.html">Network
+Design and Performance Analysis</a>, by Dr. Santosh Kumar.&nbsp;</li>
+  <li><a href="http://www.cs.wustl.edu/%7Ejain/cse567-06/index.html">Computer
+Systems Analysis</a>, by Dr. Raj Jain. </li>
+</ul>
+<ul>
+  <br>
+</ul>
+<hr>
+<h3>Policies</h3>
+<div style="margin-left: 40px;"><b>Lecture: </b>Attendance at lectures
+is required.
+If a student has to skip a lecture due to hard constraints, he/she is
+required to inform the instructor beforehand. <br>
+<br>
+<span style="font-weight: bold;">Homework:</span> Homework assignments
+will be designed to stimulate
+<b><i>independent
+thinking</i></b> among the students. They will be due at the <b><i>beginning</i></b>
+of class, usually a week after they are given.&nbsp; Homework
+assignments will
+<b><i>not</i></b>
+be accepted after the due date.
+An exception to this rule is that
+you give in advance a strong and convincing reason. <b><br>
+<br>
+Exam: </b>Exams will be scheduled in advance. Unless prior
+arrangements
+are
+made, a
+grade of zero will be recorded for missed exams.<br>
+<br>
+<b>Grading: </b>The tentative grade weighting for the semester will be:<br>
+<div style="margin-left: 80px;">Class participation: 10%<br>
+Quizzes: 45%<br>
+Project: 45% <br>
+</div>
+<div style="margin-left: 40px;">* These weights
+are subject to minor adjustments. <br>
+* Letter grades will be assigned based
+on performance
+<b><i>relative</i></b>
+to other students. A tentative grading scale is as follows:
+<div style="margin-left: 40px;">
+<div style="margin-left: 80px;">A:&nbsp; 93-100<br>
+A-: 90-92<br>
+B+: 85-89<br>
+B:&nbsp;&nbsp; 80-84<br>
+B-:&nbsp; 75-79<br>
+C+: 70-74<br>
+C:&nbsp;&nbsp; 65-69<br>
+C-:&nbsp; 60-64<br>
+F:&nbsp;&nbsp;&nbsp; 0-60<span style="font-weight: bold;"><br>
+<br>
+</span></div>
+</div>
+* <span style="font-weight: bold;">A regrading request will cause
+the
+entire exam/homework/project to be
+regraded, and thereby the overall grade can increase or decrease</span>.<br>
+<br>
+<br>
+</div>
+</div>
+<hr style="width: 100%; height: 2px;">
+<h3>Miscellaneous</h3>
+<div style="margin-left: 40px;" class="MsoNormal">I expect you to
+carefully read all material handed
+out in class. I also expect you to read the book according
+to the reading assignments announced in class. You are encouraged to
+discuss
+the material presented in class with other students, but definitely do
+<b><i>not</i></b>
+collaborate with anyone in solving the homework problems. The <a href="http://www.doso.wayne.edu/codeofconduct.pdf">Wayne State
+University Student Code of Conduct</a> applies. <span style="font-size: 8.5pt; font-family: &quot;Book Antiqua&quot;; color: black;" lang="EN-US"></span>Feel free to
+discuss our expectations and grading criteria with the grader or me
+during
+the semester.<br>
+<br>
+</div>
+
+
+</body></html>

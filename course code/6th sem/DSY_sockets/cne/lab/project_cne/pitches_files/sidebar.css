@@ -1,0 +1,50 @@
+#sidebar {
+  margin: 15px;
+  width: 200px;
+  float: right;
+  background-color: #F2DAC4;
+  border: 1px solid #D98B48;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+#sidebar h2 {
+  font-size: 14pt;
+	margin-bottom: 10px;
+}
+.staff a {
+  font-weight: bold;
+}
+.staff {
+  padding-left: 2px;
+  margin-bottom: 14px;
+  font-size: 12pt;
+}
+.staff .contact {
+  font-size: 10pt;
+}
+.staff .email::before {
+  content: "E: ";
+}
+.staff .phone::before {
+  content: "P: ";
+}
+.staff .office::before {
+  content: "O: ";
+}
+#sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 20px 22px;
+  text-indent: -20px;
+}
+
+#main {
+  padding: 2px 20px 2px 10px;
+  margin-left: 170px;
+	margin-right: 32px;
+}
+#sidebar ~ #main {
+  margin-right: 232px;	
+}
