@@ -7,7 +7,7 @@ using namespace std;
 int w[101][101];
 int c = 0;
 int ci = 0;
-int d = 0;
+int d = 0; 
 int a = 0, b = 0;;
 
 void make(int n, int m, int ix, int iy, int ox, int oy, int x, int y) {
